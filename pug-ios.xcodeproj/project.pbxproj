@@ -14,6 +14,7 @@
 		B41BADFF1E9C4C5200429971 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B41BADFD1E9C4C5200429971 /* Main.storyboard */; };
 		B41BAE011E9C4C5200429971 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B41BAE001E9C4C5200429971 /* Assets.xcassets */; };
 		B41BAE041E9C4C5200429971 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B41BAE021E9C4C5200429971 /* LaunchScreen.storyboard */; };
+		B4797E7A1E9F02E600610990 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4797E791E9F02E600610990 /* LoginViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		B41BAE001E9C4C5200429971 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B41BAE031E9C4C5200429971 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B41BAE051E9C4C5200429971 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B4797E791E9F02E600610990 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +60,7 @@
 		B41BADF41E9C4C5200429971 /* pug-ios */ = {
 			isa = PBXGroup;
 			children = (
+				B4797E791E9F02E600610990 /* LoginViewController.swift */,
 				B41BADF51E9C4C5200429971 /* AppDelegate.swift */,
 				B41BADF71E9C4C5200429971 /* RootViewController.swift */,
 				B41BADF91E9C4C5200429971 /* DataViewController.swift */,
@@ -145,6 +148,7 @@
 				B41BADF81E9C4C5200429971 /* RootViewController.swift in Sources */,
 				B41BADFC1E9C4C5200429971 /* ModelController.swift in Sources */,
 				B41BADFA1E9C4C5200429971 /* DataViewController.swift in Sources */,
+				B4797E7A1E9F02E600610990 /* LoginViewController.swift in Sources */,
 				B41BADF61E9C4C5200429971 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -309,6 +313,7 @@
 				B41BAE0A1E9C4C5200429971 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
