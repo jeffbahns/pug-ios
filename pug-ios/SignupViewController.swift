@@ -1,25 +1,18 @@
 //
-//  LoginViewController.swift
+//  SignupViewController.swift
 //  pug-ios
 //
-//  Created by Jeffrey Bahns on 4/12/17.
+//  Created by Jeffrey Bahns on 4/18/17.
 //  Copyright © 2017 Jeffrey Bahns. All rights reserved.
 //
 
 import UIKit
 
-class LoginViewController: UIViewController {
-    var dataObject: String = ""
-    
-    var apiAssistant = APIAssistant(withURLString: API.all_games)
-    //var apiAssistant = APIAssistant(withURLString: "http://headers.jsontest.com/")
+class SignupViewController: UIViewController {
 
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("making request with \(API.all_players)")
-        apiAssistant.download_request()
-        print(apiAssistant.dataFromServer!)
+
         // Do any additional setup after loading the view.
     }
 
