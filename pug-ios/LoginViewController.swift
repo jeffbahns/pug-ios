@@ -10,6 +10,7 @@ import UIKit
 
 class LoginViewController: UIViewController {
     var dataObject: String = ""
+    var gamesDS: GameDataSource?
     
     var apiAssistant = APIAssistant(withURLString: API.all_games)
     //var apiAssistant = APIAssistant(withURLString: "http://headers.jsontest.com/")
@@ -19,7 +20,8 @@ class LoginViewController: UIViewController {
         super.viewDidLoad()
         print("making request with \(API.all_players)")
         apiAssistant.download_request()
-        print(apiAssistant.dataFromServer!)
+        gamesDS = GameDataSource(dataSource: apiAssistant.dataFromServer!)
+        print(gamesDS?.numgames())
         // Do any additional setup after loading the view.
     }
 

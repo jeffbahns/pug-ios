@@ -1,0 +1,30 @@
+//
+//  PlayerDataSource.swift
+//  pug-ios
+//
+//  Created by Jeffrey Bahns on 4/18/17.
+//  Copyright © 2017 Jeffrey Bahns. All rights reserved.
+//
+
+import Foundation
+
+import UIKit
+
+class PlayerDataSource: NSObject {
+    
+    var players: [AnyObject]
+    
+    init(dataSource: [AnyObject]) {
+        self.players = dataSource
+        super.init()
+    }
+    
+    func numplayers() -> Int{
+        return players.count
+    }
+    
+    func playerAt(_ index: Int) -> Player {
+        let player = Player( player: self.players[index] )
+        return player
+    }
+}

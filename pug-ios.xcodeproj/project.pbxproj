@@ -17,6 +17,12 @@
 		B46765491EA584B900AC48BA /* APIAssistant.swift in Sources */ = {isa = PBXBuildFile; fileRef = B46765481EA584B900AC48BA /* APIAssistant.swift */; };
 		B467654B1EA5FC8800AC48BA /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B467654A1EA5FC8800AC48BA /* SignupViewController.swift */; };
 		B4797E7A1E9F02E600610990 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4797E791E9F02E600610990 /* LoginViewController.swift */; };
+		B485D7B81EA66A44003D270F /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = B485D7B71EA66A44003D270F /* Game.swift */; };
+		B485D7BA1EA66A58003D270F /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = B485D7B91EA66A58003D270F /* Player.swift */; };
+		B485D7BC1EA66A71003D270F /* Court.swift in Sources */ = {isa = PBXBuildFile; fileRef = B485D7BB1EA66A71003D270F /* Court.swift */; };
+		B485D7BE1EA6B959003D270F /* GameDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = B485D7BD1EA6B959003D270F /* GameDataSource.swift */; };
+		B485D7C01EA6B967003D270F /* PlayerDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = B485D7BF1EA6B967003D270F /* PlayerDataSource.swift */; };
+		B485D7C21EA6B972003D270F /* CourtDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = B485D7C11EA6B972003D270F /* CourtDataSource.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +38,12 @@
 		B46765481EA584B900AC48BA /* APIAssistant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIAssistant.swift; sourceTree = "<group>"; };
 		B467654A1EA5FC8800AC48BA /* SignupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
 		B4797E791E9F02E600610990 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		B485D7B71EA66A44003D270F /* Game.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
+		B485D7B91EA66A58003D270F /* Player.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
+		B485D7BB1EA66A71003D270F /* Court.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Court.swift; sourceTree = "<group>"; };
+		B485D7BD1EA6B959003D270F /* GameDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GameDataSource.swift; path = ../GameDataSource.swift; sourceTree = "<group>"; };
+		B485D7BF1EA6B967003D270F /* PlayerDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PlayerDataSource.swift; path = ../PlayerDataSource.swift; sourceTree = "<group>"; };
+		B485D7C11EA6B972003D270F /* CourtDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CourtDataSource.swift; path = ../CourtDataSource.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,19 +76,33 @@
 		B41BADF41E9C4C5200429971 /* pug-ios */ = {
 			isa = PBXGroup;
 			children = (
+				B485D7C31EA6BBF4003D270F /* models */,
+				B485D7B71EA66A44003D270F /* Game.swift */,
+				B485D7B91EA66A58003D270F /* Player.swift */,
+				B485D7BB1EA66A71003D270F /* Court.swift */,
+				B485D7BD1EA6B959003D270F /* GameDataSource.swift */,
+				B485D7BF1EA6B967003D270F /* PlayerDataSource.swift */,
+				B485D7C11EA6B972003D270F /* CourtDataSource.swift */,
 				B4797E791E9F02E600610990 /* LoginViewController.swift */,
 				B467654A1EA5FC8800AC48BA /* SignupViewController.swift */,
 				B41BADF51E9C4C5200429971 /* AppDelegate.swift */,
 				B41BADF71E9C4C5200429971 /* RootViewController.swift */,
 				B41BADF91E9C4C5200429971 /* DataViewController.swift */,
 				B41BADFB1E9C4C5200429971 /* ModelController.swift */,
-				B41BADFD1E9C4C5200429971 /* Main.storyboard */,
 				B46765481EA584B900AC48BA /* APIAssistant.swift */,
+				B41BADFD1E9C4C5200429971 /* Main.storyboard */,
 				B41BAE001E9C4C5200429971 /* Assets.xcassets */,
 				B41BAE021E9C4C5200429971 /* LaunchScreen.storyboard */,
 				B41BAE051E9C4C5200429971 /* Info.plist */,
 			);
 			path = "pug-ios";
+			sourceTree = "<group>";
+		};
+		B485D7C31EA6BBF4003D270F /* models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -152,12 +178,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				B41BADF81E9C4C5200429971 /* RootViewController.swift in Sources */,
+				B485D7C01EA6B967003D270F /* PlayerDataSource.swift in Sources */,
+				B485D7BC1EA66A71003D270F /* Court.swift in Sources */,
+				B485D7BE1EA6B959003D270F /* GameDataSource.swift in Sources */,
 				B467654B1EA5FC8800AC48BA /* SignupViewController.swift in Sources */,
 				B41BADFC1E9C4C5200429971 /* ModelController.swift in Sources */,
 				B41BADFA1E9C4C5200429971 /* DataViewController.swift in Sources */,
 				B46765491EA584B900AC48BA /* APIAssistant.swift in Sources */,
 				B4797E7A1E9F02E600610990 /* LoginViewController.swift in Sources */,
+				B485D7C21EA6B972003D270F /* CourtDataSource.swift in Sources */,
 				B41BADF61E9C4C5200429971 /* AppDelegate.swift in Sources */,
+				B485D7BA1EA66A58003D270F /* Player.swift in Sources */,
+				B485D7B81EA66A44003D270F /* Game.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
