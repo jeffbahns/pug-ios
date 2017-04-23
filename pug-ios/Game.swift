@@ -40,13 +40,6 @@ class Game: NSObject {
         return nil
     }
     
-    func gameName() -> Int? {
-        if let a = game[GameAPI.game_duration] {
-            return a as? Int
-        }
-        return nil
-    }
-    
     func gameSkillLevel() -> String? {
         if let a = game[GameAPI.game_skill_level] {
             return a as? String

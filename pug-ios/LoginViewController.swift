@@ -1,4 +1,4 @@
-//
+    //
 //  LoginViewController.swift
 //  pug-ios
 //
@@ -11,17 +11,16 @@ import UIKit
 class LoginViewController: UIViewController {
     var dataObject: String = ""
     var gamesDS: GameDataSource?
-    
-    var apiAssistant = APIAssistant(withURLString: API.all_games)
-    //var apiAssistant = APIAssistant(withURLString: "http://headers.jsontest.com/")
+    var playerDS: PlayerDataSource?
+    //var apiAssistant = APIAssistant(withURLString: API.all_games)
+    var apiAssistant = APIAssistant(withURLString: "http://localhost:3000/api/all_games")
+    var authAssistant: APIAssistant?
 
+    @IBOutlet weak var usernameTextField: UITextField!
+    @IBOutlet weak var passwordTextField: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("making request with \(API.all_players)")
-        apiAssistant.download_request()
-        gamesDS = GameDataSource(dataSource: apiAssistant.dataFromServer!)
-        print(gamesDS?.numgames())
         // Do any additional setup after loading the view.
     }
 
@@ -30,6 +29,22 @@ class LoginViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    @IBAction func loginUser(_ sender: Any) {
+        authAssistant = APIAssistant()
+        authAssistant?.authorize_request(username: usernameTextField.text!, password: passwordTextField.text!)
+        //let loginResponse = AuthenticationResponse(response: (authAssistant?.dataFromServer!)!)
+        
+            //if (loginResponse.success()) {
+        if (true) {
+            //let p = loginResponse.getUser()
+            //print(p)
+            performSegue(withIdentifier: "loginToHome", sender: nil)
+        }
+        else {
+            print("Failed to log in, could be username/password error")
+        }
+
+    }
 
     /*
     // MARK: - Navigation

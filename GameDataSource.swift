@@ -19,7 +19,7 @@ class GameDataSource: NSObject {
         super.init()
     }
     
-    func numgames() -> Int{
+    func numGames() -> Int{
         return games.count
     }
     

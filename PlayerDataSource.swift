@@ -19,7 +19,7 @@ class PlayerDataSource: NSObject {
         super.init()
     }
     
-    func numplayers() -> Int{
+    func numPlayers() -> Int{
         return players.count
     }
     

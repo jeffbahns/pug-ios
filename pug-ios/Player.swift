@@ -18,6 +18,7 @@ class Player: NSObject {
         self.player = player
         super.init()
     }
+
     
     func playerUsername() -> String? {
         if let a = player[PlayerAPI.player_username] {
