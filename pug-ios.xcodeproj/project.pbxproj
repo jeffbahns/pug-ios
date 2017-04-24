@@ -27,6 +27,7 @@
 		B485D7C21EA6B972003D270F /* CourtDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = B485D7C11EA6B972003D270F /* CourtDataSource.swift */; };
 		B4C375D81EAA754B00B51689 /* Resources.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4C375D71EAA754B00B51689 /* Resources.swift */; };
 		B4C375DC1EAA862D00B51689 /* AddGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4C375DB1EAA862D00B51689 /* AddGameViewController.swift */; };
+		B4C375DF1EADDC3B00B51689 /* pug-ios.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B4C375DD1EADDC3B00B51689 /* pug-ios.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -52,6 +53,7 @@
 		B485D7C11EA6B972003D270F /* CourtDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CourtDataSource.swift; path = ../CourtDataSource.swift; sourceTree = "<group>"; };
 		B4C375D71EAA754B00B51689 /* Resources.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Resources.swift; path = ../Resources.swift; sourceTree = "<group>"; };
 		B4C375DB1EAA862D00B51689 /* AddGameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddGameViewController.swift; sourceTree = "<group>"; };
+		B4C375DE1EADDC3B00B51689 /* pug-ios.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "pug-ios.xcdatamodel"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,6 +92,7 @@
 				B41BADFD1E9C4C5200429971 /* Main.storyboard */,
 				B41BAE001E9C4C5200429971 /* Assets.xcassets */,
 				B41BADF51E9C4C5200429971 /* AppDelegate.swift */,
+				B4C375DD1EADDC3B00B51689 /* pug-ios.xcdatamodeld */,
 				B41BAE021E9C4C5200429971 /* LaunchScreen.storyboard */,
 				B41BAE051E9C4C5200429971 /* Info.plist */,
 			);
@@ -219,6 +222,7 @@
 				B45BFCAB1EA9A06A00FBD5C1 /* HomeViewController.swift in Sources */,
 				B4C375DC1EAA862D00B51689 /* AddGameViewController.swift in Sources */,
 				B485D7C21EA6B972003D270F /* CourtDataSource.swift in Sources */,
+				B4C375DF1EADDC3B00B51689 /* pug-ios.xcdatamodeld in Sources */,
 				B41BADF61E9C4C5200429971 /* AppDelegate.swift in Sources */,
 				B485D7BA1EA66A58003D270F /* Player.swift in Sources */,
 				B485D7B81EA66A44003D270F /* Game.swift in Sources */,
@@ -388,6 +392,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		B4C375DD1EADDC3B00B51689 /* pug-ios.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				B4C375DE1EADDC3B00B51689 /* pug-ios.xcdatamodel */,
+			);
+			currentVersion = B4C375DE1EADDC3B00B51689 /* pug-ios.xcdatamodel */;
+			path = "pug-ios.xcdatamodeld";
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = B41BADEA1E9C4C5200429971 /* Project object */;
 }
