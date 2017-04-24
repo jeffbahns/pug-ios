@@ -277,7 +277,7 @@
                                 <state key="normal" title="+"/>
                                 <connections>
                                     <action selector="addGame:" destination="UlF-0M-jwf" eventType="touchUpInside" id="vU4-5g-rsH"/>
-                                    <segue destination="NPG-9w-EZD" kind="show" id="gqB-LO-fuk"/>
+                                    <segue destination="NPG-9w-EZD" kind="show" identifier="homeToAddGame" id="gqB-LO-fuk"/>
                                 </connections>
                             </button>
                         </subviews>
