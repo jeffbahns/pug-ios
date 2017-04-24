@@ -11,7 +11,7 @@
 		B41BADF81E9C4C5200429971 /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B41BADF71E9C4C5200429971 /* RootViewController.swift */; };
 		B41BADFA1E9C4C5200429971 /* DataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B41BADF91E9C4C5200429971 /* DataViewController.swift */; };
 		B41BADFC1E9C4C5200429971 /* ModelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B41BADFB1E9C4C5200429971 /* ModelController.swift */; };
-		B41BADFF1E9C4C5200429971 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B41BADFD1E9C4C5200429971 /* Main.storyboard */; };
+		B41BADFF1E9C4C5200429971 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B41BADFD1E9C4C5200429971 /* Main.storyboard */; settings = {ASSET_TAGS = ("Sign Up", ); }; };
 		B41BAE011E9C4C5200429971 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B41BAE001E9C4C5200429971 /* Assets.xcassets */; };
 		B41BAE041E9C4C5200429971 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B41BAE021E9C4C5200429971 /* LaunchScreen.storyboard */; };
 		B45BFCA71EA943AA00FBD5C1 /* AuthenticationResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = B45BFCA61EA943AA00FBD5C1 /* AuthenticationResponse.swift */; };
@@ -159,6 +159,10 @@
 		B41BADEA1E9C4C5200429971 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				KnownAssetTags = (
+					"Sign Up",
+					s,
+				);
 				LastSwiftUpdateCheck = 0830;
 				LastUpgradeCheck = 0830;
 				ORGANIZATIONNAME = "Jeffrey Bahns";

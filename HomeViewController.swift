@@ -14,7 +14,7 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate {
     var manager:CLLocationManager!
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var dock: UIToolbar!
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
