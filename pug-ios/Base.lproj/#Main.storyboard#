@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="C0W-Lj-9MJ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="C0W-Lj-9MJ">
     <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -85,6 +85,12 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             </textField>
+<<<<<<< HEAD
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3YD-FE-ca1">
+                                <rect key="frame" x="184" y="388" width="135" height="101"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+=======
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1yx-o3-gaa">
                                 <rect key="frame" x="170" y="334" width="87" height="51"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -95,6 +101,7 @@
                                 <connections>
                                     <segue destination="znS-Ev-j4X" kind="show" id="tWc-0w-wzK"/>
                                 </connections>
+>>>>>>> ac1a2648c660c054085b6eeebe57c2d289b4113d
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.77134486609999997" green="0.74547991069999997" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -254,7 +261,7 @@
                         <viewControllerLayoutGuide type="top" id="M06-eM-HP1"/>
                         <viewControllerLayoutGuide type="bottom" id="g10-Ki-NFb"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="IDE-vj-nSe">
+                    <view key="view" contentMode="scaleToFill" misplaced="YES" id="IDE-vj-nSe">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -262,14 +269,14 @@
                                 <rect key="frame" x="0.0" y="-7" width="414" height="692"/>
                             </mapView>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2gE-3S-saw">
-                                <rect key="frame" x="0.0" y="692" width="414" height="44"/>
+                                <rect key="frame" x="0.0" y="628" width="414" height="44"/>
                                 <items>
                                     <barButtonItem title="fuck" width="167" id="AR2-JP-tvw" userLabel="Left"/>
                                     <barButtonItem title="Fucky" width="193" style="plain" id="0Le-hh-hgF" userLabel="Thing"/>
                                 </items>
                             </toolbar>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QBI-dC-AIS">
-                                <rect key="frame" x="348" y="20" width="46" height="51"/>
+                                <rect key="frame" x="348" y="64" width="46" height="51"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="51" id="4A4-oU-C0F"/>
                                     <constraint firstAttribute="width" constant="46" id="9Qr-ye-Syf"/>
@@ -277,7 +284,6 @@
                                 <state key="normal" title="+"/>
                                 <connections>
                                     <action selector="addGame:" destination="UlF-0M-jwf" eventType="touchUpInside" id="vU4-5g-rsH"/>
-                                    <segue destination="NPG-9w-EZD" kind="show" id="gqB-LO-fuk"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -304,6 +310,7 @@
             </objects>
             <point key="canvasLocation" x="1600.0000000000002" y="-243.75000000000003"/>
         </scene>
+<<<<<<< HEAD
         <!--Add Game View Controller-->
         <scene sceneID="fs4-WA-Cci">
             <objects>
