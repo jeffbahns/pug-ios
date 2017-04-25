@@ -8,6 +8,7 @@
 
 
 import UIKit
+import CoreData
 
 class LoginViewController: UIViewController {
     var dataObject: String = ""
@@ -23,6 +24,17 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        
+        //setting up core data
+        let appDelegate = (UIApplication.shared.delegate) as! AppDelegate
+        
+        let context = appDelegate.persistentContainer.viewContext
+        
+        let playerCD = Player_(context:context)
+        
+        
+
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -39,8 +51,12 @@ class LoginViewController: UIViewController {
         if (true) {
             //let p = loginResponse.getUser()
             //print(p)
+            
+            playerCD.username 
+            
             performSegue(withIdentifier: "loginToHome", sender: nil)
-        }
+            
+                   }
         else {
             print("Failed to log in, could be username/password error")
         }
