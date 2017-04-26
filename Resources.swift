@@ -10,12 +10,16 @@ import Foundation
 
 // globals for accessing API
 struct API {
+    static let base_url_local = "http://localhost:3000/api"
     static let base_url = "https://enigmatic-tundra-24206.herokuapp.com/api"
     static let auth_url = "https://enigmatic-tundra-24206.herokuapp.com/authenticate"
-    static let auth_local_url = "http://localhost:3000/api/authenticate"
-    static let all_games = API.base_url + "/all_games/"
-    static let all_players = API.base_url + "/all_players/"
-    static let all_courts = API.base_url + "/all_courts/"
+    static let auth_local_url = base_url_local + "/authenticate"
+    static let all_games = API.base_url + "/all_games"
+    static let all_players = API.base_url + "/all_players"
+    
+    static let all_courts = API.base_url + "/all_courts"
+    static let some_courts = API.base_url + "/courts"
+    static let some_courts_local = API.base_url_local + "/courts"
 }
 
 // globals set here for all database structures
@@ -37,6 +41,11 @@ struct CourtAPI {
     static let court_state = "State"
     static let court_zip = "ZipCode"
     static let court_id = "CourtID"
+    static let court_coord_lat = "Latitude"
+    static let court_coord_long = "Longitude"
+    
+    static let court_distance_mi = "Distance"
+    
 }
 
 struct PlayerAPI {

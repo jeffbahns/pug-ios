@@ -11,9 +11,7 @@ import UIKit
 
 class LoginViewController: UIViewController {
     var dataObject: String = ""
-    var gamesDS: GameDataSource?
     var playerDS: PlayerDataSource?
-    //var apiAssistant = APIAssistant(withURLString: API.all_games)
     var apiAssistant = APIAssistant(withURLString: "http://localhost:3000/api/all_games")
     var authAssistant: APIAssistant?
 
@@ -33,12 +31,11 @@ class LoginViewController: UIViewController {
     @IBAction func loginUser(_ sender: Any) {
         authAssistant = APIAssistant()
         authAssistant?.authorize_request(username: usernameTextField.text!, password: passwordTextField.text!)
-        //let loginResponse = AuthenticationResponse(response: (authAssistant?.dataFromServer!)!)
+        let loginResponse = AuthenticationResponse(response: (authAssistant?.dataFromServer!)!)
         
-            //if (loginResponse.success()) {
-        if (true) {
-            //let p = loginResponse.getUser()
-            //print(p)
+        if (loginResponse.success()) {
+            let p = loginResponse.getUser()
+            print(p)
             performSegue(withIdentifier: "loginToHome", sender: nil)
         }
         else {
