@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2D0DFBEA1EB0172B004E2A02 /* playerCoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D0DFBE91EB0172B004E2A02 /* playerCoreData.swift */; };
 		B41BADF61E9C4C5200429971 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B41BADF51E9C4C5200429971 /* AppDelegate.swift */; };
 		B41BADF81E9C4C5200429971 /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B41BADF71E9C4C5200429971 /* RootViewController.swift */; };
 		B41BADFA1E9C4C5200429971 /* DataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B41BADF91E9C4C5200429971 /* DataViewController.swift */; };
@@ -31,6 +32,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2D0DFBE91EB0172B004E2A02 /* playerCoreData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = playerCoreData.swift; sourceTree = "<group>"; };
 		B41BADF21E9C4C5200429971 /* pug-ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "pug-ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B41BADF51E9C4C5200429971 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B41BADF71E9C4C5200429971 /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
@@ -109,6 +111,7 @@
 				B485D7BF1EA6B967003D270F /* PlayerDataSource.swift */,
 				B485D7C11EA6B972003D270F /* CourtDataSource.swift */,
 				B45BFCA61EA943AA00FBD5C1 /* AuthenticationResponse.swift */,
+				2D0DFBE91EB0172B004E2A02 /* playerCoreData.swift */,
 			);
 			name = models;
 			sourceTree = "<group>";
@@ -228,6 +231,7 @@
 				B485D7C21EA6B972003D270F /* CourtDataSource.swift in Sources */,
 				B4C375DF1EADDC3B00B51689 /* pug-ios.xcdatamodeld in Sources */,
 				B41BADF61E9C4C5200429971 /* AppDelegate.swift in Sources */,
+				2D0DFBEA1EB0172B004E2A02 /* playerCoreData.swift in Sources */,
 				B485D7BA1EA66A58003D270F /* Player.swift in Sources */,
 				B485D7B81EA66A44003D270F /* Game.swift in Sources */,
 			);

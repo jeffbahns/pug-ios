@@ -8,6 +8,7 @@
 
 
 import UIKit
+    
 import CoreData
 
 class LoginViewController: UIViewController {
@@ -17,6 +18,8 @@ class LoginViewController: UIViewController {
     //var apiAssistant = APIAssistant(withURLString: API.all_games)
     var apiAssistant = APIAssistant(withURLString: "http://localhost:3000/api/all_games")
     var authAssistant: APIAssistant?
+    
+    let diditwork = playerCoreData()
 
     @IBOutlet weak var usernameTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
@@ -24,18 +27,11 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        diditwork.addToCoreData();
+        diditwork.coredataTester();
         
-        //setting up core data
-        let appDelegate = (UIApplication.shared.delegate) as! AppDelegate
-        
-        let context = appDelegate.persistentContainer.viewContext
-        
-        let playerCD = Player_(context:context)
-        
-        
-
-        
-    }
+     
+           }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -52,7 +48,7 @@ class LoginViewController: UIViewController {
             //let p = loginResponse.getUser()
             //print(p)
             
-            playerCD.username 
+
             
             performSegue(withIdentifier: "loginToHome", sender: nil)
             
@@ -63,6 +59,10 @@ class LoginViewController: UIViewController {
 
     }
 
+    
+    
+    
+    
     /*
     // MARK: - Navigation
 
@@ -72,5 +72,6 @@ class LoginViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    
 
 }
