@@ -15,6 +15,8 @@
 		B41BADFF1E9C4C5200429971 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B41BADFD1E9C4C5200429971 /* Main.storyboard */; settings = {ASSET_TAGS = ("Sign Up", ); }; };
 		B41BAE011E9C4C5200429971 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B41BAE001E9C4C5200429971 /* Assets.xcassets */; };
 		B41BAE041E9C4C5200429971 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B41BAE021E9C4C5200429971 /* LaunchScreen.storyboard */; };
+		B45957E71EB823E800949F42 /* NearbyTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B45957E61EB823E800949F42 /* NearbyTableViewController.swift */; };
+		B45957E91EB8288B00949F42 /* CourtTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B45957E81EB8288B00949F42 /* CourtTableViewCell.swift */; };
 		B45BFCA71EA943AA00FBD5C1 /* AuthenticationResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = B45BFCA61EA943AA00FBD5C1 /* AuthenticationResponse.swift */; };
 		B45BFCAB1EA9A06A00FBD5C1 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B45BFCAA1EA9A06A00FBD5C1 /* HomeViewController.swift */; };
 		B46765491EA584B900AC48BA /* APIAssistant.swift in Sources */ = {isa = PBXBuildFile; fileRef = B46765481EA584B900AC48BA /* APIAssistant.swift */; };
@@ -29,6 +31,7 @@
 		B4C375D81EAA754B00B51689 /* Resources.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4C375D71EAA754B00B51689 /* Resources.swift */; };
 		B4C375DC1EAA862D00B51689 /* AddGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4C375DB1EAA862D00B51689 /* AddGameViewController.swift */; };
 		B4C375DF1EADDC3B00B51689 /* pug-ios.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B4C375DD1EADDC3B00B51689 /* pug-ios.xcdatamodeld */; };
+		B4E6A1781EB1B25F0039FEFF /* CourtAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4E6A1771EB1B25F0039FEFF /* CourtAnnotation.swift */; };
 		B4FBE2F81EAEDCA2002E0ED7 /* LocationSearchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4FBE2F71EAEDCA2002E0ED7 /* LocationSearchTableViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -43,6 +46,8 @@
 		B41BAE001E9C4C5200429971 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B41BAE031E9C4C5200429971 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B41BAE051E9C4C5200429971 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B45957E61EB823E800949F42 /* NearbyTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NearbyTableViewController.swift; path = ../NearbyTableViewController.swift; sourceTree = "<group>"; };
+		B45957E81EB8288B00949F42 /* CourtTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CourtTableViewCell.swift; sourceTree = "<group>"; };
 		B45BFCA61EA943AA00FBD5C1 /* AuthenticationResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthenticationResponse.swift; sourceTree = "<group>"; };
 		B45BFCAA1EA9A06A00FBD5C1 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HomeViewController.swift; path = ../HomeViewController.swift; sourceTree = "<group>"; };
 		B46765481EA584B900AC48BA /* APIAssistant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIAssistant.swift; sourceTree = "<group>"; };
@@ -57,6 +62,7 @@
 		B4C375D71EAA754B00B51689 /* Resources.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Resources.swift; path = ../Resources.swift; sourceTree = "<group>"; };
 		B4C375DB1EAA862D00B51689 /* AddGameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddGameViewController.swift; sourceTree = "<group>"; };
 		B4C375DE1EADDC3B00B51689 /* pug-ios.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "pug-ios.xcdatamodel"; sourceTree = "<group>"; };
+		B4E6A1771EB1B25F0039FEFF /* CourtAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CourtAnnotation.swift; sourceTree = "<group>"; };
 		B4FBE2F71EAEDCA2002E0ED7 /* LocationSearchTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationSearchTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -114,6 +120,8 @@
 				B485D7C11EA6B972003D270F /* CourtDataSource.swift */,
 				B45BFCA61EA943AA00FBD5C1 /* AuthenticationResponse.swift */,
 				2D0DFBE91EB0172B004E2A02 /* playerCoreData.swift */,
+				B4E6A1771EB1B25F0039FEFF /* CourtAnnotation.swift */,
+				B45957E81EB8288B00949F42 /* CourtTableViewCell.swift */,
 			);
 			name = models;
 			sourceTree = "<group>";
@@ -145,6 +153,7 @@
 				B4C375DB1EAA862D00B51689 /* AddGameViewController.swift */,
 				B45BFCAA1EA9A06A00FBD5C1 /* HomeViewController.swift */,
 				B4FBE2F71EAEDCA2002E0ED7 /* LocationSearchTableViewController.swift */,
+				B45957E61EB823E800949F42 /* NearbyTableViewController.swift */,
 			);
 			name = home;
 			sourceTree = "<group>";
@@ -239,6 +248,7 @@
 				B45BFCA71EA943AA00FBD5C1 /* AuthenticationResponse.swift in Sources */,
 				B485D7BC1EA66A71003D270F /* Court.swift in Sources */,
 				B4FBE2F81EAEDCA2002E0ED7 /* LocationSearchTableViewController.swift in Sources */,
+				B4E6A1781EB1B25F0039FEFF /* CourtAnnotation.swift in Sources */,
 				B485D7BE1EA6B959003D270F /* GameDataSource.swift in Sources */,
 				B4C375D81EAA754B00B51689 /* Resources.swift in Sources */,
 				B467654B1EA5FC8800AC48BA /* SignupViewController.swift in Sources */,
@@ -247,12 +257,14 @@
 				B46765491EA584B900AC48BA /* APIAssistant.swift in Sources */,
 				B4797E7A1E9F02E600610990 /* LoginViewController.swift in Sources */,
 				B45BFCAB1EA9A06A00FBD5C1 /* HomeViewController.swift in Sources */,
+				B45957E91EB8288B00949F42 /* CourtTableViewCell.swift in Sources */,
 				B4C375DC1EAA862D00B51689 /* AddGameViewController.swift in Sources */,
 				B485D7C21EA6B972003D270F /* CourtDataSource.swift in Sources */,
 				B4C375DF1EADDC3B00B51689 /* pug-ios.xcdatamodeld in Sources */,
 				B41BADF61E9C4C5200429971 /* AppDelegate.swift in Sources */,
 				2D0DFBEA1EB0172B004E2A02 /* playerCoreData.swift in Sources */,
 				B485D7BA1EA66A58003D270F /* Player.swift in Sources */,
+				B45957E71EB823E800949F42 /* NearbyTableViewController.swift in Sources */,
 				B485D7B81EA66A44003D270F /* Game.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

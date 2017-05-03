@@ -19,11 +19,11 @@ class CourtDataSource: NSObject {
         super.init()
     }
     
-    func numCourts() -> Int{
+    func numCourts() -> Int {
         return courts.count
     }
     
-    func CourtAt(_ index: Int) -> Court {
+    func courtAt(_ index: Int) -> Court {
         let court = Court( court: self.courts[index] )
         return court
     }

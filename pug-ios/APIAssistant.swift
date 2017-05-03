@@ -32,11 +32,11 @@ class APIAssistant: NSObject {
     }
     
     func download_request() {
-        print("URL requested ::" + self.urlString)
+        print("URL requested :: " + self.urlString)
         if let url = URL(string: urlString) {
             do {
                 let contents = try String(contentsOf: url)
-                print("CONT:", contents)
+                //print("CONT:", contents)
                 if let data = contents.data(using: .utf8) {
                     dataFromServer = try! JSONSerialization.jsonObject(with: data, options: []) as! [AnyObject]
                     //print(dataFromServer)
@@ -60,5 +60,9 @@ class APIAssistant: NSObject {
     func locations_request(origin_lat: Double, origin_long: Double, radius: Int) {
         self.urlString = API.some_courts_local + "?origin_lat=\(origin_lat)&origin_long=\(origin_long)&radius=\(radius)"
         self.download_request()
+    }
+    
+    func games_in_court_request(courtID: Int) {
+        self.urlString = API.games_in_court + String(courtID)
     }
 }

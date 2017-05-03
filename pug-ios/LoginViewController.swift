@@ -19,6 +19,7 @@ class LoginViewController: UIViewController {
     
     let diditwork = playerCoreData()
 
+    @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var usernameTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     
@@ -37,22 +38,17 @@ class LoginViewController: UIViewController {
     @IBAction func loginUser(_ sender: Any) {
         authAssistant = APIAssistant()
         authAssistant?.authorize_request(username: usernameTextField.text!, password: passwordTextField.text!)
-        let loginResponse = AuthenticationResponse(response: (authAssistant?.dataFromServer!)!)
-        if (loginResponse.success()) {
-            let p = loginResponse.getUser()
-            print(p)
-            performSegue(withIdentifier: "loginToHome", sender: nil)
-            
-                   }
-        else {
-            print("Failed to log in, could be username/password error")
+
+        if let data = authAssistant?.dataFromServer! {
+            let loginResponse = AuthenticationResponse(response: data)
+            if (loginResponse.success()) {
+                let p = loginResponse.getUser()
+                print(p)
+                performSegue(withIdentifier: "loginToHome", sender: nil)
+            }
         }
-
+        print("Failed to log in, could be username/password error")
     }
-
-    
-    
-    
     
     /*
     // MARK: - Navigation

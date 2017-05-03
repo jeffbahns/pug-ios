@@ -32,7 +32,6 @@ class HomeViewController: UIViewController {
 
         apiAssistant = APIAssistant()
         
-        //manager = CLLocationManager()
         manager.delegate = self
         manager.desiredAccuracy = kCLLocationAccuracyBest
         manager.requestWhenInUseAuthorization()
@@ -54,8 +53,8 @@ class HomeViewController: UIViewController {
         
         locationSearchTable.mapView = mapView
         locationSearchTable.handleMapSearchDelegate = self
-        
     }
+    
     
     @IBAction func addGame(_ sender: Any) {
         performSegue(withIdentifier: "homeToAddGame", sender: nil)
@@ -83,13 +82,32 @@ extension HomeViewController : CLLocationManagerDelegate {
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         if let location = locations.first {
+            let radius = Double(15)
+            let delta = radius / 69.0
+            
             self.apiAssistant?.locations_request(origin_lat: location.coordinate.latitude,
                                         origin_long: location.coordinate.longitude,
-                                        radius: 10)
-            print(self.apiAssistant?.data())
-            let span = MKCoordinateSpanMake(0.05, 0.05)
+                                        radius: 100)
+            self.courtDS = CourtDataSource(dataSource: (self.apiAssistant?.data())!)
+            if let x = self.courtDS?.numCourts() {
+                for i in 0 ..< x
+                {
+                    //let annotation = MKPointAnnotation()
+                    let cannotation = CourtAnnotation(identifier: (courtDS?.courtAt(i).courtID())!, title: "court", subtitle: "court_subtitle", coordinate: CLLocationCoordinate2D(latitude: (self.courtDS?.courtAt(i).courtLat())!,longitude: (self.courtDS?.courtAt(i).courtLong())!))
+                    mapView.addAnnotation(cannotation)
+                    
+                }
+            }
+            
+            let span = MKCoordinateSpanMake(0.5, 0.5)
+            //let region = MKCoordinateRegion(center: location.coordinate, span: span)
+            //mapView.setRegion(region, animated: true)
+            
             let region = MKCoordinateRegion(center: location.coordinate, span: span)
-            mapView.setRegion(region, animated: true)
+            var currentRegion = region
+            currentRegion.span = MKCoordinateSpan(latitudeDelta: delta, longitudeDelta: delta)
+            self.mapView.region = currentRegion
+            
         }
     }
     
@@ -123,6 +141,9 @@ extension HomeViewController: HandleMapSearch {
         mapView.setRegion(region, animated: true)
     }
 }
+
+
+
 
 // helpful maybe
 

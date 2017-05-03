@@ -20,6 +20,8 @@ struct API {
     static let all_courts = API.base_url + "/all_courts"
     static let some_courts = API.base_url + "/courts"
     static let some_courts_local = API.base_url_local + "/courts"
+    
+    static let games_in_court = API.base_url_local + "/games_in_court?CourtID="
 }
 
 // globals set here for all database structures
@@ -43,8 +45,8 @@ struct CourtAPI {
     static let court_id = "CourtID"
     static let court_coord_lat = "Latitude"
     static let court_coord_long = "Longitude"
-    
     static let court_distance_mi = "Distance"
+    static let court_image = "Image"
     
 }
 

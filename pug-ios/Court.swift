@@ -12,7 +12,7 @@ import UIKit
 class Court: NSObject {
     
     let court: AnyObject
-    
+
     init(court: AnyObject) {
         self.court = court
         super.init()
@@ -77,6 +77,23 @@ class Court: NSObject {
     func courtID() -> Int? {
         if let a = court[CourtAPI.court_id] {
             return a as? Int
+        }
+        return nil
+    }
+
+    func courtDistance() -> Double? {
+        if let a = court[CourtAPI.court_distance_mi] {
+            return a as? Double
+        }
+        return nil
+    }
+    func getImage() ->UIImage? {
+        if let uriString = court[CourtAPI.court_image], let uri = uriString as? String {
+            if let url = URL(string: uri),
+                let data = try? Data(contentsOf: url),
+                let image = UIImage(data: data) {
+                return image
+            }
         }
         return nil
     }
