@@ -19,6 +19,8 @@ class LoginViewController: UIViewController {
     var apiAssistant = APIAssistant(withURLString: "http://localhost:3000/api/all_games")
     var authAssistant: APIAssistant?
     
+    
+    
     let diditwork = playerCoreData()
 
     @IBOutlet weak var usernameTextField: UITextField!
@@ -27,8 +29,8 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        diditwork.addToCoreData();
-        diditwork.coredataTester();
+       // diditwork.addToCoreData(p: p);
+       // diditwork.coredataTester();
         
      
            }
