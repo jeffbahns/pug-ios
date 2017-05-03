@@ -84,7 +84,7 @@ class playerCoreData: NSObject{
         context.delete(playerCD)
     }
    
-    func getUsercoredata(username: string)  ->{
+    func getUsercoredata(username: String) {
         //
         //
         //        // test to see if core data is working

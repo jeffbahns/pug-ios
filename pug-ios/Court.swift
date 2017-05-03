@@ -18,6 +18,27 @@ class Court: NSObject {
         super.init()
     }
     
+    func courtLat() -> Double? {
+        if let a = court[CourtAPI.court_coord_lat] {
+            return a as? Double
+        }
+        return nil
+    }
+    
+    func courtLong() -> Double? {
+        if let a = court[CourtAPI.court_coord_long] {
+            return a as? Double
+        }
+        return nil
+    }
+    
+    func courtDistanceMiles() -> Double? {
+        if let a = court[CourtAPI.court_distance_mi] {
+            return a as? Double
+        }
+        return nil
+    }
+    
     func courtName() -> String? {
         if let a = court[CourtAPI.court_name] {
             return a as? String
