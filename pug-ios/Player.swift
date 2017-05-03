@@ -55,11 +55,16 @@ class Player: NSObject {
         return nil
     }
     
-    func playerID() -> Int? {
+    func playerID() -> Int32? {
         if let a = player[PlayerAPI.player_id] {
-            return a as? Int
+            return a as? Int32
         }
         return nil
+    }
+    func playerAge() -> Int32? {
+        //if let a = player[PlayerAPI.player_age] {
+        let a: Int32 = 0
+            return a
     }
     
 }
