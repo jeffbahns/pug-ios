@@ -17,9 +17,7 @@ class LoginViewController: UIViewController {
     var apiAssistant = APIAssistant(withURLString: "http://localhost:3000/api/all_games")
     var authAssistant: APIAssistant?
     
-    
-    
-    let diditwork = playerCoreData()
+    let playerCD = PlayerCoreData()
 
     @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var usernameTextField: UITextField!
@@ -27,9 +25,11 @@ class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
-        //diditwork.addToCoreData();
-        //diditwork.coredataTester();
+        if playerCD.getUserCoreData(username: "jeffbahns") {
+            performSegue(withIdentifier: "loginToHome", sender: nil)
+        }
+        //playerCD.addToCoreData();
+        //playerCD.coredataTester();
     }
 
     override func didReceiveMemoryWarning() {
@@ -44,12 +44,16 @@ class LoginViewController: UIViewController {
         if let data = authAssistant?.dataFromServer! {
             let loginResponse = AuthenticationResponse(response: data)
             if (loginResponse.success()) {
-                let p = loginResponse.getUser()
-                print(p)
+                let p: Player = loginResponse.getUser()!
+                //playerCD.deleteCoreData()
+                //playerCD.addToCoreData(p: p)
+                //playerCD.coreDataTester()
                 performSegue(withIdentifier: "loginToHome", sender: nil)
+            } else {
+                print("Failed to log in, could be username/password error")
             }
         }
-        print("Failed to log in, could be username/password error")
+        
     }
     
     /*

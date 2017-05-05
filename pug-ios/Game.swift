@@ -66,5 +66,12 @@ class Game: NSObject {
         }
         return nil
     }
-
+    
+    /* player related stuff */
+    func playerUsername() -> String? {
+        if let a = game[PlayerAPI.player_username] {
+            return a as? String
+        }
+        return nil
+    }
 }

@@ -18,27 +18,17 @@ class NearbyTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.courtData = APIAssistant()
+        courtData?.addObserver(self, forKeyPath: "dataFromServer", options: .old, context: nil)
         self.courtData?.locations_request(origin_lat: Locations.ssu_lat,
                                           origin_long: Locations.ssu_long,
                                           radius: 100)
-        self.courtDS = CourtDataSource(dataSource: (courtData?.data()!)!)
-        if let cds = courtDS {
-            print("VIEWLOADNum courts is \(cds.numCourts())")
-        } else {
-            print("VIEWLOADNum courts is 0")
-        }
-        
-        courtData?.addObserver(self, forKeyPath: "dataFromServer", options: .old, context: nil)
-        
         manager.delegate = self
         manager.desiredAccuracy = kCLLocationAccuracyBest
         manager.requestLocation()
-        
-        
     }
     
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
-        
+        self.courtDS = CourtDataSource(dataSource: (courtData?.data()!)!)
         DispatchQueue.main.async(execute: {
             self.tableView.reloadData()
         })
@@ -56,10 +46,8 @@ class NearbyTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if let cds = courtDS {
-            print("Num courts is \(cds.numCourts())")
             return cds.numCourts()
         }
-        print("Num courts is 0")
         return 0
     }
 
@@ -110,16 +98,20 @@ class NearbyTableViewController: UITableViewController {
     }
     */
 
-    /*
+    
     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        if segue.identifier == "courtCellToCourt" {
+            let cell = sender as! CourtTableViewCell
+            if let indexPath = tableView.indexPath(for: cell), let ds = courtDS {
+                print("pressed court cell: \(indexPath.row)")
+                let courtVC = segue.destination as! CourtViewController
+                courtVC.courtForThisView(court: ds.courtAt(indexPath.row))
+            }
+        }
     }
-    */
-
+    
 }
 
 extension NearbyTableViewController : CLLocationManagerDelegate {
@@ -136,7 +128,6 @@ extension NearbyTableViewController : CLLocationManagerDelegate {
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         if let location = locations.first {
-            print("I MAKE IT DIS FAR")
             let radius = Double(15)
             let delta = radius / 69.0
             

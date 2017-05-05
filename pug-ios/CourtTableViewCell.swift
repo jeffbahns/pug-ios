@@ -31,6 +31,6 @@ class CourtTableViewCell: UITableViewCell {
         }
         cellLabel.text = court.courtName()
         let distance = String(format: "%.1f", court.courtDistance()!)
-        distanceLabel.text = "\(distance) miles away"
+        distanceLabel.text = "\(distance) mi"
     }
 }

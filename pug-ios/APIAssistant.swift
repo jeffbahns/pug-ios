@@ -64,5 +64,6 @@ class APIAssistant: NSObject {
     
     func games_in_court_request(courtID: Int) {
         self.urlString = API.games_in_court + String(courtID)
+        self.download_request()
     }
 }

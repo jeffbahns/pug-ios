@@ -64,8 +64,16 @@ class HomeViewController: UIViewController {
         
     }
     
-    
-    
+     // MARK: - Navigation
+     
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "homeToUser" {
+            var userVC = segue.destination as! UserViewController
+            //userVC.user = Player()
+            
+        }
+     }
+
 }
 
 extension HomeViewController : CLLocationManagerDelegate {
