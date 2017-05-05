@@ -13,7 +13,7 @@ class APIAssistant: NSObject {
     
     var urlString: String
     dynamic var dataFromServer: [AnyObject]?
-    
+    let server_remote = true // true = remote, false = local
     init(withURLString: String) {
         urlString = withURLString
         super.init()
@@ -52,18 +52,30 @@ class APIAssistant: NSObject {
     }
     
     func authorize_request(username: String, password: String) {
-        //self.urlString = API.auth_url + "?Username=\(username)&Password=\(password)"
-        self.urlString = API.auth_local_url + "?Username=\(username)&Password=\(password)"
+        if server_remote {
+            self.urlString = API.auth_url + "?Username=\(username)&Password=\(password)"
+        } else {
+            self.urlString = API.auth_local_url + "?Username=\(username)&Password=\(password)"
+        }
         self.download_request()
     }
     
     func locations_request(origin_lat: Double, origin_long: Double, radius: Int) {
-        self.urlString = API.some_courts_local + "?origin_lat=\(origin_lat)&origin_long=\(origin_long)&radius=\(radius)"
+        if server_remote {
+            self.urlString = API.some_courts + "?origin_lat=\(origin_lat)&origin_long=\(origin_long)&radius=\(radius)"
+        } else {
+            self.urlString = API.some_courts + "?origin_lat=\(origin_lat)&origin_long=\(origin_long)&radius=\(radius)"
+        }
         self.download_request()
     }
     
     func games_in_court_request(courtID: Int) {
-        self.urlString = API.games_in_court + String(courtID)
+        if server_remote {
+            self.urlString = API.base_url + API.games_in_court + String(courtID)
+        } else {
+            self.urlString = API.base_url_local + API.games_in_court + String(courtID)
+        }
+        
         self.download_request()
     }
 }

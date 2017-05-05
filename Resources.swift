@@ -21,7 +21,7 @@ struct API {
     static let some_courts = API.base_url + "/courts"
     static let some_courts_local = API.base_url_local + "/courts"
     
-    static let games_in_court = API.base_url_local + "/games_in_court?CourtID="
+    static let games_in_court = "/games_in_court?CourtID="
 }
 
 // globals set here for all database structures
