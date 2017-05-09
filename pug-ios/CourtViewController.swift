@@ -13,9 +13,9 @@ class CourtViewController: UIViewController {
     var apiAssist = APIAssistant()
     
     @IBOutlet weak var courtImage: UIImageView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("court view was loaded: \(court?.courtName())")
         self.title = court?.courtName()!
         if let cI = court?.getImage() {
             courtImage.image = cI

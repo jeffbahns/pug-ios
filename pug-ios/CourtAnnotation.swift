@@ -16,14 +16,15 @@ class CourtAnnotation: NSObject, MKAnnotation
     let title: String?
     let subtitle: String?
     let coordinate: CLLocationCoordinate2D
+    let court: Court?
     
-    
-    init(identifier: Int, title: String, subtitle: String, coordinate: CLLocationCoordinate2D)
+    init(identifier: Int, title: String, subtitle: String, court: Court, coordinate: CLLocationCoordinate2D)
     {
         self.identifier = identifier
         self.title = title
         self.subtitle = subtitle
         self.coordinate = coordinate
+        self.court = court
         super.init()
     }
     

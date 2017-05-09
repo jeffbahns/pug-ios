@@ -38,6 +38,14 @@ class Court: NSObject {
         }
         return nil
     }
+
+    // returns distance in miles, formatted to 1 decimal place
+    func courtDistanceString() -> String? {
+        if let a = self.courtDistanceMiles() {
+            return String(format: "%.1f", a)
+        }
+        return nil
+    }
     
     func courtName() -> String? {
         if let a = court[CourtAPI.court_name] {
@@ -77,13 +85,6 @@ class Court: NSObject {
     func courtID() -> Int? {
         if let a = court[CourtAPI.court_id] {
             return a as? Int
-        }
-        return nil
-    }
-
-    func courtDistance() -> Double? {
-        if let a = court[CourtAPI.court_distance_mi] {
-            return a as? Double
         }
         return nil
     }

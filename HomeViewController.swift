@@ -15,15 +15,17 @@ protocol HandleMapSearch {
     func dropPinZoomIn(placemark:MKPlacemark)
 }
 */
-class HomeViewController: UIViewController  {
+class HomeViewController: UIViewController {
 
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var dock: UIToolbar!
 
     let manager = CLLocationManager()
-
+    var selectedCourt: CourtAnnotation? = nil
+    
     var resultSearchController:UISearchController? = nil
     var selectedPin:MKPlacemark? = nil
+    
     
     var apiAssistant: APIAssistant?
     var courtDS: CourtDataSource?
@@ -71,52 +73,16 @@ class HomeViewController: UIViewController  {
             var userVC = segue.destination as! UserViewController
             userVC.userID = 5
         }
+        
+        if segue.identifier == "courtPinToCourt" {
+            let courtVC = segue.destination as! CourtViewController
+            courtVC.courtForThisView(court: (selectedCourt?.court)!)
+        }
      }
  
 }
 
-extension HomeViewController : CLLocationManagerDelegate {
-    
-    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-        print("error:: \(error.localizedDescription)")
-    }
-    
-    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
-        if status == .authorizedWhenInUse {
-            manager.requestLocation()
-        }
-    }
-    
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        if let location = locations.first {
-            let radius = Double(15)
-            let delta = radius / 69.0
-            self.apiAssistant?.locations_request(origin_lat: location.coordinate.latitude,
-                                        origin_long: location.coordinate.longitude,
-                                        radius: 100)
-            self.courtDS = CourtDataSource(dataSource: (self.apiAssistant?.data())!)
-            if let x = self.courtDS?.numCourts() {
-                for i in 0 ..< x {
-                    if let c = courtDS?.courtAt(i) {
-                        let cannotation = CourtAnnotation(identifier: c.courtID()!, title: "court name", subtitle: "sub", coordinate: CLLocationCoordinate2D(latitude: c.courtLat()!,longitude: c.courtLong()!))
-                        mapView.addAnnotation(cannotation)
-                    }
-                }
-            }
-            
-            let span = MKCoordinateSpanMake(0.5, 0.5)
-            //let region = MKCoordinateRegion(center: location.coordinate, span: span)
-            //mapView.setRegion(region, animated: true)
-            
-            let region = MKCoordinateRegion(center: location.coordinate, span: span)
-            var currentRegion = region
-            currentRegion.span = MKCoordinateSpan(latitudeDelta: delta, longitudeDelta: delta)
-            self.mapView.region = currentRegion
-            
-        }
-    }
-    
-}
+
 /*
 extension HomeViewController: HandleMapSearch {
     func dropPinZoomIn(placemark:MKPlacemark){

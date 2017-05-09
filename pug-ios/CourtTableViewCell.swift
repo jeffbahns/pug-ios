@@ -30,7 +30,6 @@ class CourtTableViewCell: UITableViewCell {
             cellImage.image = courtImage
         }
         cellLabel.text = court.courtName()
-        let distance = String(format: "%.1f", court.courtDistance()!)
-        distanceLabel.text = "\(distance) mi"
+        distanceLabel.text = "\(court.courtDistanceString()!) mi"
     }
 }

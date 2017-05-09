@@ -24,6 +24,8 @@ struct API {
     static let games_in_court = "/games_in_court?CourtID="
     static let players_in_game = "/players_in_game?GameID="
     static let player_by_id = "/player_by_id?PlayerID="
+    
+    static let insert_game = "/insert_game"
 }
 
 // globals set here for all database structures

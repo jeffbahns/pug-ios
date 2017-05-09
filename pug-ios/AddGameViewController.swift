@@ -9,11 +9,12 @@
 import UIKit
 
 class AddGameViewController: UIViewController {
+    @IBOutlet weak var pickerView: UIPickerView!
 
     @IBOutlet weak var placetextfield: UITextField!
     @IBOutlet weak var gameDatePicker: UIDatePicker!
     @IBOutlet weak var titleTextfield: UITextField!
-    
+    var api = APIAssistant()
     
     
     override func viewDidLoad() {
@@ -34,17 +35,9 @@ class AddGameViewController: UIViewController {
         let title = titleTextfield.text!
         
         let formatter = DateFormatter()
-        formatter.dateFormat = "MMMM dd,YYYY"
-        let date = formatter.string(from: gameDatePicker.date)
-        
-        formatter.dateFormat = "HH:mm"// "hh:mm a" for 12 hour clock  
-        let time = formatter.string(from: gameDatePicker.date)
-     
-        
-        print ("this is the date ", date, "and the time " ,time)
-        print(" this is the title ", title, " and this is place ", place)
-        
-        
+        formatter.dateFormat = "YYYYMMddHHmm"
+        let dateTime = formatter.string(from: gameDatePicker.date)
+        //api.insert_game(gameDateTime: dateTime, gameName: titleTextfield.text!, gameDuration: 1, gameSkillLevel: "C", courtID: <#T##Int#>, creatorID: <#T##Int#>)
     }
 
     /*
