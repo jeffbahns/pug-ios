@@ -36,7 +36,7 @@ extension HomeViewController: MKMapViewDelegate {
             }
             
             //var rightButton: AnyObject! = UIButton(type: .detailDisclosure)
-            view.rightCalloutAccessoryView = rightButton as! UIView
+            //view.rightCalloutAccessoryView = rightButton as! UIView
 
             return view
         }
