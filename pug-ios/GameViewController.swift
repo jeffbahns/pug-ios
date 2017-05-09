@@ -58,8 +58,12 @@ extension UIViewController {
         if hour! >= 12 {
             ampm = "PM"
         }
+        let dateAsString = dateTime[8...11]
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "h:mm a"
+        let date = dateFormatter.date(from: dateAsString)
         hour = hour! % 12
-        return "\(month)/\(day)/\(year), \(hour!):\(min) \(ampm)"
+        return "\(month)/\(day)/\(year), \(hour!):\(min) \(ampm)::\(date)"
     }
 }
 extension String {

@@ -25,16 +25,12 @@ class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        if playerCD.getUserCoreData(username: "jeffbahns") {
-                //performSegue(withIdentifier: "loginToHome", sender: nil)
-        }
-        //playerCD.addToCoreData();
-        //playerCD.coredataTester();
-    }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        /*
+        if playerCD.getUserCoreData() {
+            performSegue(withIdentifier: "loginToHome", sender: nil)
+        }
+         */
     }
     
     @IBAction func loginUser(_ sender: Any) {
@@ -42,10 +38,10 @@ class LoginViewController: UIViewController {
         authAssistant?.authorize_request(username: usernameTextField.text!, password: passwordTextField.text!)
 
         if let data = authAssistant?.dataFromServer! {
-            if let p: Player? = Player(player: data as AnyObject) {
+            if let p: Player? = Player(player: data[0] as AnyObject) {
                 //playerCD.deleteCoreData()
-                //playerCD.addToCoreData(p: p)
-                //playerCD.coreDataTester()
+                playerCD.addToCoreData(p: p!)
+                playerCD.coreDataTester()
                 performSegue(withIdentifier: "loginToHome", sender: nil)
             } else {
                 print("Failed to log in, could be username/password error")
@@ -64,5 +60,4 @@ class LoginViewController: UIViewController {
     }
     */
     
-
-}
+    }
