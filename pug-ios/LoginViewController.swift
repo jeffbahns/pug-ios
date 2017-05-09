@@ -25,12 +25,10 @@ class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        if playerCD.getUserCoreData(username: "jeffbahns") {
-            performSegue(withIdentifier: "loginToHome", sender: nil)
-        }
-        //playerCD.addToCoreData();
-        //playerCD.coredataTester();
-    }
+//        if playerCD.getUserCoreData() {
+//            performSegue(withIdentifier: "loginToHome", sender: nil)
+//        }
+           }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -46,8 +44,8 @@ class LoginViewController: UIViewController {
             if (loginResponse.success()) {
                 let p: Player = loginResponse.getUser()!
                 //playerCD.deleteCoreData()
-                //playerCD.addToCoreData(p: p)
-                //playerCD.coreDataTester()
+                playerCD.addToCoreData(p: p)
+                playerCD.coreDataTester()
                 performSegue(withIdentifier: "loginToHome", sender: nil)
             } else {
                 print("Failed to log in, could be username/password error")
