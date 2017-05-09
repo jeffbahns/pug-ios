@@ -9,43 +9,51 @@
 import UIKit
 
 class UserTableViewController: UITableViewController {
-
+    var playerData: APIAssistant = APIAssistant()
+    var playerDS: PlayerDataSource?
+    var gameID: Int?
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        playerData.addObserver(self, forKeyPath: "dataFromServer", options: .old, context: nil)
+        self.playerData.players_in_game_request(gameID: self.gameID!)
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+        print("Data \(playerData.data()!)")
+        self.playerDS = PlayerDataSource(dataSource: playerData.data()!)
+        print("shit:\(playerDS?.players)")
+        DispatchQueue.main.async(execute: {
+            self.tableView.reloadData()
+        })
+    }
+    
+    deinit {
+        playerData.removeObserver(self, forKeyPath: "dataFromServer", context: nil)
     }
 
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
+        if let pds = playerDS {
+            return pds.numPlayers()
+        }
         return 0
     }
 
-    /*
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-        // Configure the cell...
-
+        let cell = tableView.dequeueReusableCell(withIdentifier: "UserCell", for: indexPath)
+        if let theCell = cell as? UserTableViewCell, let player = playerDS?.playerAt(indexPath.row) {
+            
+            theCell.useUser(player)
+        }
         return cell
     }
-    */
+    
 
     /*
     // Override to support conditional editing of the table view.
@@ -82,14 +90,16 @@ class UserTableViewController: UITableViewController {
     }
     */
 
-    /*
+    
     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        let cell = sender as! UserTableViewCell
+        if let indexPath = tableView.indexPath(for: cell), let ds = playerDS {
+            let userVC = segue.destination as! UserViewController
+            userVC.userForThisView(user: ds.playerAt(indexPath.row))
+        }
     }
-    */
+ 
 
 }

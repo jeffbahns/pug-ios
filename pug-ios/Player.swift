@@ -68,4 +68,24 @@ class Player: NSObject {
             return a
     }
     
+    func getImage() ->UIImage? {
+        if let uriString = player[PlayerAPI.player_image], let uri = uriString as? String {
+            if let url = URL(string: uri),
+                let data = try? Data(contentsOf: url),
+                let image = UIImage(data: data) {
+                return image
+            }
+        } else {
+            if let uriString: String =  "http://www.wc-hs.org/admin/mgmt/blank-user.jpg",
+                let uri = uriString as? String {
+                if let url = URL(string: uri),
+                    let data = try? Data(contentsOf: url),
+                    let image = UIImage(data: data) {
+                    return image
+                }
+            }
+        }
+        return nil
+    }
+    
 }

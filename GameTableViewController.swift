@@ -23,6 +23,7 @@ class GameTableViewController: UITableViewController {
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
         print("Data \(gameData.data()!)")
         self.gameDS = GameDataSource(dataSource: gameData.data()!)
+        print("shit:\(gameDS?.games)")
         DispatchQueue.main.async(execute: {
             self.tableView.reloadData()
         })
@@ -95,8 +96,10 @@ class GameTableViewController: UITableViewController {
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "gameCellToGame" {
-            
+        let cell = sender as! GameTableViewCell
+        if let indexPath = tableView.indexPath(for: cell), let ds = gameDS {
+            let gameVC = segue.destination as! GameViewController
+            gameVC.gameForThisView(game: ds.gameAt(indexPath.row))
         }
 
     }

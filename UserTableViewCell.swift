@@ -9,7 +9,9 @@
 import UIKit
 
 class UserTableViewCell: UITableViewCell {
-
+    @IBOutlet weak var usernameLabel: UILabel!
+    
+    @IBOutlet weak var userImage: UIImageView!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -22,6 +24,7 @@ class UserTableViewCell: UITableViewCell {
     }
 
     func useUser(_ user: Player) {
-        
+        usernameLabel.text = user.playerUsername()
+        userImage.image = user.getImage()
     }
 }

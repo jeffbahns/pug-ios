@@ -26,7 +26,7 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         if playerCD.getUserCoreData(username: "jeffbahns") {
-            performSegue(withIdentifier: "loginToHome", sender: nil)
+                //performSegue(withIdentifier: "loginToHome", sender: nil)
         }
         //playerCD.addToCoreData();
         //playerCD.coredataTester();
@@ -42,9 +42,7 @@ class LoginViewController: UIViewController {
         authAssistant?.authorize_request(username: usernameTextField.text!, password: passwordTextField.text!)
 
         if let data = authAssistant?.dataFromServer! {
-            let loginResponse = AuthenticationResponse(response: data)
-            if (loginResponse.success()) {
-                let p: Player = loginResponse.getUser()!
+            if let p: Player? = Player(player: data as AnyObject) {
                 //playerCD.deleteCoreData()
                 //playerCD.addToCoreData(p: p)
                 //playerCD.coreDataTester()

@@ -39,7 +39,7 @@ class APIAssistant: NSObject {
                 //print("CONT:", contents)
                 if let data = contents.data(using: .utf8) {
                     dataFromServer = try! JSONSerialization.jsonObject(with: data, options: []) as! [AnyObject]
-                    //print(dataFromServer)
+                    print(dataFromServer)
                 }
             } catch {
                 print("CONTENTS :: BAD")
@@ -75,7 +75,24 @@ class APIAssistant: NSObject {
         } else {
             self.urlString = API.base_url_local + API.games_in_court + String(courtID)
         }
-        
+        self.download_request()
+    }
+    
+    func players_in_game_request(gameID: Int) {
+        if server_remote {
+            self.urlString = API.base_url + API.players_in_game + String(gameID)
+        } else {
+            self.urlString = API.base_url_local + API.players_in_game + String(gameID)
+        }
+        self.download_request()
+    }
+    
+    func player_by_id(playerID: Int) {
+        if server_remote {
+            self.urlString = API.base_url + API.player_by_id + String(playerID)
+        } else {
+            self.urlString = API.base_url_local + API.player_by_id + String(playerID)
+        }
         self.download_request()
     }
 }

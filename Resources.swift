@@ -12,7 +12,7 @@ import Foundation
 struct API {
     static let base_url_local = "http://localhost:3000/api"
     static let base_url = "https://enigmatic-tundra-24206.herokuapp.com/api"
-    static let auth_url = "https://enigmatic-tundra-24206.herokuapp.com/authenticate"
+    static let auth_url = base_url + "/authenticate"
     static let auth_local_url = base_url_local + "/authenticate"
     static let all_games = API.base_url + "/all_games"
     static let all_players = API.base_url + "/all_players"
@@ -22,6 +22,8 @@ struct API {
     static let some_courts_local = API.base_url_local + "/courts"
     
     static let games_in_court = "/games_in_court?CourtID="
+    static let players_in_game = "/players_in_game?GameID="
+    static let player_by_id = "/player_by_id?PlayerID="
 }
 
 // globals set here for all database structures
@@ -58,6 +60,7 @@ struct PlayerAPI {
     static let player_phone_number = "PhoneNumber"
     static let player_age = "Age"
     static let player_id = "PlayerID"
+    static let player_image = "Image"
 }
 
 struct AuthResponseAPI {
@@ -72,3 +75,4 @@ struct Locations {
     static let ssu_lat = 38.3394
     static let ssu_long = -122.6742
 }
+

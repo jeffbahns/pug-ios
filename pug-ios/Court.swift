@@ -87,6 +87,7 @@ class Court: NSObject {
         }
         return nil
     }
+    
     func getImage() ->UIImage? {
         if let uriString = court[CourtAPI.court_image], let uri = uriString as? String {
             if let url = URL(string: uri),

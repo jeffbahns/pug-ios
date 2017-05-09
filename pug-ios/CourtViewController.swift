@@ -38,9 +38,9 @@ class CourtViewController: UIViewController {
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "courtToGame" {
+            print("Giving court id a destination")
             var gameTVC = segue.destination as! GameTableViewController
             gameTVC.courtID = court?.courtID()
-            
         }
     }
  

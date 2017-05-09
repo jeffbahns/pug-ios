@@ -10,11 +10,12 @@ import UIKit
 import CoreLocation
 import MapKit
 
+/*
 protocol HandleMapSearch {
     func dropPinZoomIn(placemark:MKPlacemark)
 }
-
-class HomeViewController: UIViewController {
+*/
+class HomeViewController: UIViewController  {
 
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var dock: UIToolbar!
@@ -27,6 +28,8 @@ class HomeViewController: UIViewController {
     var apiAssistant: APIAssistant?
     var courtDS: CourtDataSource?
     
+    
+    let playerCD = PlayerCoreData()
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -36,7 +39,8 @@ class HomeViewController: UIViewController {
         manager.desiredAccuracy = kCLLocationAccuracyBest
         manager.requestWhenInUseAuthorization()
         manager.requestLocation()
-        
+        mapView.delegate = self
+        /*
         // search table shit
         let locationSearchTable = storyboard!.instantiateViewController(withIdentifier: "LocationSearchTableViewController") as!    LocationSearchTableViewController
         resultSearchController = UISearchController(searchResultsController: locationSearchTable)
@@ -53,6 +57,7 @@ class HomeViewController: UIViewController {
         
         locationSearchTable.mapView = mapView
         locationSearchTable.handleMapSearchDelegate = self
+         */
     }
     
     
@@ -60,20 +65,14 @@ class HomeViewController: UIViewController {
         performSegue(withIdentifier: "homeToAddGame", sender: nil)
     }
     
-    func loadLocalGames() {
-        
-    }
     
-     // MARK: - Navigation
-     
      override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "homeToUser" {
             var userVC = segue.destination as! UserViewController
-            //userVC.user = Player()
-            
+            userVC.userID = 5
         }
      }
-
+ 
 }
 
 extension HomeViewController : CLLocationManagerDelegate {
@@ -92,18 +91,16 @@ extension HomeViewController : CLLocationManagerDelegate {
         if let location = locations.first {
             let radius = Double(15)
             let delta = radius / 69.0
-            
             self.apiAssistant?.locations_request(origin_lat: location.coordinate.latitude,
                                         origin_long: location.coordinate.longitude,
                                         radius: 100)
             self.courtDS = CourtDataSource(dataSource: (self.apiAssistant?.data())!)
             if let x = self.courtDS?.numCourts() {
-                for i in 0 ..< x
-                {
-                    //let annotation = MKPointAnnotation()
-                    let cannotation = CourtAnnotation(identifier: (courtDS?.courtAt(i).courtID())!, title: "court", subtitle: "court_subtitle", coordinate: CLLocationCoordinate2D(latitude: (self.courtDS?.courtAt(i).courtLat())!,longitude: (self.courtDS?.courtAt(i).courtLong())!))
-                    mapView.addAnnotation(cannotation)
-                    
+                for i in 0 ..< x {
+                    if let c = courtDS?.courtAt(i) {
+                        let cannotation = CourtAnnotation(identifier: c.courtID()!, title: "court name", subtitle: "sub", coordinate: CLLocationCoordinate2D(latitude: c.courtLat()!,longitude: c.courtLong()!))
+                        mapView.addAnnotation(cannotation)
+                    }
                 }
             }
             
@@ -120,7 +117,7 @@ extension HomeViewController : CLLocationManagerDelegate {
     }
     
 }
-
+/*
 extension HomeViewController: HandleMapSearch {
     func dropPinZoomIn(placemark:MKPlacemark){
         // cache the pin
@@ -149,22 +146,4 @@ extension HomeViewController: HandleMapSearch {
         mapView.setRegion(region, animated: true)
     }
 }
-
-
-
-
-// helpful maybe
-
-/*
- // set initial location in SSU
- let locValue:CLLocationCoordinate2D = manager.location!.coordinate
- print("locations = \(locValue.latitude) \(locValue.longitude)")
- let initialLocation = CLLocation(latitude: Locations.ssu_lat, longitude: Locations.ssu_long)
- let regionRadius: CLLocationDistance = 10000
- func centerMapOnLocation(location: CLLocation) {
- let coordinateRegion = MKCoordinateRegionMakeWithDistance(location.coordinate,
- regionRadius * 2.0, regionRadius * 2.0)
- mapView.setRegion(coordinateRegion, animated: true)
- }
- centerMapOnLocation(location: initialLocation)
- */
+*/
