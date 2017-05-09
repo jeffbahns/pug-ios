@@ -9,17 +9,31 @@
 import UIKit
 
 class CourtViewController: UIViewController {
-    var court: Court?
+    var court: Court? = nil
     var apiAssist = APIAssistant()
     
     @IBOutlet weak var courtImage: UIImageView!
+    @IBOutlet weak var courtAddressLabel: UILabel!
     
+    @IBOutlet weak var courtDistanceLabel: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = court?.courtName()!
-        if let cI = court?.getImage() {
-            courtImage.image = cI
+        if court != nil {
+            if let cN = court?.courtName() {
+                self.title = cN
+            }
+            if let cI = court?.getImage() {
+                courtImage.image = cI
+            }
+            if let address = court?.courtAddress(),let city = court?.courtCity(),
+                let state = court?.courtState(), let zip = court?.courtZip() {
+                courtAddressLabel.text = "\(address), \(city), \(state), \(zip)"
+            }
+            if let distance = court?.courtDistanceString() {
+                courtDistanceLabel.text = "\(distance) miles away"
+            }
         }
+        
         
         // Do any additional setup after loading the view.
     }

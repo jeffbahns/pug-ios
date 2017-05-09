@@ -16,7 +16,7 @@ extension HomeViewController: MKMapViewDelegate {
             let view = MKAnnotationView(annotation: annotation, reuseIdentifier: "myPin")
 
             let courtPin = UIImage(named: "hoop")
-            let size = CGSize(width: 44, height: 44)
+            let size = CGSize(width: 40, height: 40)
             UIGraphicsBeginImageContext(size)
             courtPin?.draw(in: CGRect(x: 0, y: 0, width: size.width, height: size.height))
             let resizedImage = UIGraphicsGetImageFromCurrentImageContext()
@@ -35,8 +35,8 @@ extension HomeViewController: MKMapViewDelegate {
                 view.leftCalloutAccessoryView = UIImageView(image: resize)
             }
             
-            //var rightButton: AnyObject! = UIButton(type: .detailDisclosure)
-            //view.rightCalloutAccessoryView = rightButton as! UIView
+            var rightButton: AnyObject! = UIButton(type: .detailDisclosure)
+            view.rightCalloutAccessoryView = rightButton as! UIView
 
             return view
         }

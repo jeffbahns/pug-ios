@@ -18,9 +18,11 @@ class GameViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        if let gt = game?.gameName(), let gdt = game?.gameDate() {
-            gameDateTime.text = displayDate(dateTime: gdt)
+        if let gt = game?.gameName() {
             self.title = gt
+        }
+        if let gdt = game?.gameDate() {
+            gameDateTime.text = displayDate(dateTime: gdt)
         }
     }
 

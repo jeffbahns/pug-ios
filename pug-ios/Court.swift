@@ -75,6 +75,13 @@ class Court: NSObject {
         return nil
     }
     
+    func courtZip() -> String? {
+        if let a = court[CourtAPI.court_zip] {
+            return a as? String
+        }
+        return nil
+    }
+    
     func courtSkillLevel() -> Int? {
         if let a = court[CourtAPI.court_id] {
             return a as? Int
