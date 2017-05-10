@@ -16,20 +16,22 @@ class CourtTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
 
     func useCourt(_ court: Court) {
         if let courtImage = court.getImage() {
             cellImage.image = courtImage
         }
-        cellLabel.text = court.courtName()
-        distanceLabel.text = "\(court.courtDistanceString()!) mi"
+        if let name = court.courtName() {
+            cellLabel.text = name
+        }
+        if let distance = court.courtDistanceString() {
+            distanceLabel.text = "\(distance) mi"
+        }
+
     }
 }

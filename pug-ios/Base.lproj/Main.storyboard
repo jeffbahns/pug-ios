@@ -317,15 +317,11 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <toolbarItems>
-                        <barButtonItem title="Nearby" id="IAj-o0-KU4">
-                            <connections>
-                                <segue destination="E6a-cG-MI5" kind="show" id="g4O-3e-7jT"/>
-                            </connections>
-                        </barButtonItem>
+                        <barButtonItem title="Nearby" id="IAj-o0-KU4"/>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="Sqg-aB-ya5"/>
                         <barButtonItem title="Add New" id="mnL-E3-cGJ">
                             <connections>
-                                <segue destination="NPG-9w-EZD" kind="show" id="f62-TE-4ht"/>
+                                <segue destination="NPG-9w-EZD" kind="show" identifier="homeToAddGame" id="5l3-LZ-6SX"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="Q1S-Bj-bbp"/>

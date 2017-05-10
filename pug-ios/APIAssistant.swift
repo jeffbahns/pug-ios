@@ -31,7 +31,7 @@ class APIAssistant: NSObject {
         return nil
     }
     
-    func download_request() {
+    func download_request() -> Bool {
         print("URL requested :: " + self.urlString)
         if let url = URL(string: urlString) {
             do {
@@ -44,11 +44,14 @@ class APIAssistant: NSObject {
             } catch {
                 print("CONTENTS :: BAD")
                 // contents could not be loaded
+                return false
             }
         } else {
             print("URL :: BAD!")
+            return false
             // the URL was bad!
         }
+        return true
     }
     
     func authorize_request(username: String, password: String) {
@@ -96,16 +99,16 @@ class APIAssistant: NSObject {
         self.download_request()
     }
     
-    func insert_game(gameDateTime: String, gameName: String, gameDuration: Int, gameSkillLevel: String, courtID: Int, creatorID: Int) {
+    func insert_game(gameDateTime: String, gameName: String, gameDuration: Int,
+                     gameSkillLevel: String, courtID: Int, creatorID: Int) -> Bool {
         if server_remote {
             self.urlString = API.base_url + API.insert_game
         } else {
             self.urlString = API.base_url_local + API.insert_game
         }
-        //gameDuration = 1
-        //gameSkillLevel = "C"
         self.urlString += "?GameDateTime=\(gameDateTime)&GameName=\(gameName)&GameDuration=\(gameDuration)"
         self.urlString += "&GameSkillLevel=\(gameSkillLevel)&CourtID=\(String(courtID))&CreatorID=\(String(creatorID))"
-        self.download_request()
+        return self.download_request()
+        
     }
 }

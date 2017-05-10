@@ -63,12 +63,7 @@ class HomeViewController: UIViewController {
     }
     
     
-    @IBAction func addGame(_ sender: Any) {
-        performSegue(withIdentifier: "homeToAddGame", sender: nil)
-    }
-    
-    
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "homeToUser" {
             var userVC = segue.destination as! UserViewController
             userVC.userID = 5
@@ -78,6 +73,12 @@ class HomeViewController: UIViewController {
             let courtVC = segue.destination as! CourtViewController
             courtVC.courtForThisView(court: (selectedCourt?.court)!)
         }
+        
+        if segue.identifier == "homeToAddGame" {
+            let addGameVC = segue.destination as! AddGameViewController
+            addGameVC.courtDSForThisView(courtDS: self.courtDS!)
+        }
+        
      }
  
 }
