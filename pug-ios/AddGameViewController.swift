@@ -14,21 +14,26 @@ class AddGameViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
     @IBOutlet weak var gameDatePicker: UIDatePicker!
     @IBOutlet weak var titleTextfield: UITextField!
     
+    let player = PlayerCoreData()
+    
     var api = APIAssistant()
     var pickerData: [String] = [String]()
     var pickedCourt: Court?
-        override func viewDidLoad() {
+    let currentDate = Date()
+
+    override func viewDidLoad() {
         super.viewDidLoad()
         self.pickerView.delegate = self
         self.pickerView.dataSource = self
-        
-        pickerData = ["Item 1", "Item 2", "Item 3", "Item 4", "Item 5", "Item 6"]
+        gameDatePicker.minimumDate = currentDate;
+        player.getUserCoreData()
+        self.pickedCourt = (courtDS?.courtAt(0))!
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
-    
+
     func courtDSForThisView(courtDS: CourtDataSource) {
         self.courtDS = courtDS
     }
@@ -50,7 +55,6 @@ class AddGameViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
         self.pickedCourt = (courtDS?.courtAt(row))!    }
     
     @IBAction func addGameBotton(_ sender: Any) {
-        let currentDate = Date()
         let formatter = DateFormatter()
         formatter.dateFormat = "YYYYMMddHHmm"
         
@@ -62,8 +66,11 @@ class AddGameViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
             //print("\(title), \(dateTime), \(courtID)")
             let formattedTitle = title.replacingOccurrences(of: " ", with: "%20")
             
+            let playerid = player.getPlayerID()
+            player.deleteCoreData()
+            player.coreDataTester()
             
-            if api.insert_game(gameDateTime: dateTime, gameName: formattedTitle, gameDuration: 1, gameSkillLevel: "C", courtID: courtID, creatorID: 4) {
+            if api.insert_game(gameDateTime: dateTime, gameName: formattedTitle, gameDuration: 1, gameSkillLevel: "C", courtID: courtID, creatorID: playerid  ) {
                 var gameMessage = "You have created a game at "
 
                 gameMessage = gameMessage + (pickedCourt?.courtName())!
