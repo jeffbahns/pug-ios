@@ -64,12 +64,11 @@ extension UIViewController {
         if hour == 0 {
             hour = 12
         }
-
         return "\(month)/\(day)/\(year), \(hour!):\(min) \(ampm)"
     }
 }
+
 extension String {
-    
     subscript (r: CountableClosedRange<Int>) -> String {
         get {
             let startIndex =  self.index(self.startIndex, offsetBy: r.lowerBound)

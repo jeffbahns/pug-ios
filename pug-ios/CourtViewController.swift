@@ -14,8 +14,9 @@ class CourtViewController: UIViewController {
     
     @IBOutlet weak var courtImage: UIImageView!
     @IBOutlet weak var courtAddressLabel: UILabel!
-    
     @IBOutlet weak var courtDistanceLabel: UILabel!
+    @IBOutlet weak var courtAvailableGamesLabel: UITextView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         if court != nil {
@@ -46,10 +47,8 @@ class CourtViewController: UIViewController {
     func courtForThisView(court: Court) {
         self.court = court
     }
-
     
     // MARK: - Navigation
-
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "courtToGame" {
             print("Giving court id a destination")

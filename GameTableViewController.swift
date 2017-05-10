@@ -17,18 +17,17 @@ class GameTableViewController: UITableViewController {
         super.viewDidLoad()
         gameData.addObserver(self, forKeyPath: "dataFromServer", options: .old, context: nil)
         self.gameData.games_in_court_request(courtID: self.courtID!)
-        
     }
     
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
-        print("Data \(gameData.data()!)")
+        //print("Data \(gameData.data()!)")
         self.gameDS = GameDataSource(dataSource: gameData.data()!)
-        print("shit:\(gameDS?.games)")
+        
         DispatchQueue.main.async(execute: {
             self.tableView.reloadData()
         })
     }
-    
+
     deinit {
         gameData.removeObserver(self, forKeyPath: "dataFromServer", context: nil)
     }
@@ -55,7 +54,6 @@ class GameTableViewController: UITableViewController {
         }
         return cell
     }
- 
 
     /*
     // Override to support conditional editing of the table view.
