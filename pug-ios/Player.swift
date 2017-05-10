@@ -63,9 +63,10 @@ class Player: NSObject {
     }
     
     func playerAge() -> Int32? {
-        //if let a = player[PlayerAPI.player_age] {
-        let a: Int32 = 0
-            return a
+        if let a = player[PlayerAPI.player_age] {
+            return a as? Int32
+        }
+        return nil
     }
     
     func getImage() ->UIImage? {

@@ -35,6 +35,7 @@ class GameViewController: UIViewController {
             gameCreatorImage.image = image
             gameCreatorImage.setRounded()
         }
+        
         if let username = player?.playerUsername() {
             gameCreator.text = username
             if let stored = playerCD.getUsername(),

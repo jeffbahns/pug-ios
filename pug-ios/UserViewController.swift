@@ -38,6 +38,9 @@ class UserViewController: UIViewController {
             //self.title = name
             userRealNameLabel.text = "\(fName) \(lName)"
         }
+        if let age = user?.playerAge() {
+            userAgeLabel.text = "\(age)"
+        }
         
     }
 

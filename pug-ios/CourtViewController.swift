@@ -13,10 +13,10 @@ class CourtViewController: UIViewController {
     var apiAssist = APIAssistant()
     
     @IBOutlet weak var courtImage: UIImageView!
-    @IBOutlet weak var courtAddressLabel: UILabel!
     @IBOutlet weak var courtDistanceLabel: UILabel!
     @IBOutlet weak var courtAvailableGamesLabel: UITextView!
     
+    @IBOutlet weak var courtAddressTextView: UITextView!
     override func viewDidLoad() {
         super.viewDidLoad()
         if court != nil {
@@ -28,7 +28,7 @@ class CourtViewController: UIViewController {
             }
             if let address = court?.courtAddress(),let city = court?.courtCity(),
                 let state = court?.courtState(), let zip = court?.courtZip() {
-                courtAddressLabel.text = "\(address), \(city), \(state), \(zip)"
+                courtAddressTextView.text = "\(address), \(city), \(state), \(zip)"
             }
             if let distance = court?.courtDistanceString() {
                 courtDistanceLabel.text = "\(distance) miles away"
