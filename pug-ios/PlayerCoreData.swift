@@ -58,7 +58,11 @@ class PlayerCoreData: NSObject{
         let context = appDelegate.persistentContainer.viewContext
         let playerCD = Player_(context:context)
         context.delete(playerCD)
-    }
+        
+        
+        }
+        
+    
    
     func getUserCoreData() -> Bool {
         // test to see if core data is working
@@ -78,10 +82,11 @@ class PlayerCoreData: NSObject{
                 CDfirstName = String(describing: playerCD.player_first_name)
                 CDlastName = String(describing: playerCD.player_last_name)
                 CDPlayerid = Int(playerCD.player_id)
-                return true
+                
                 
                 
             }
+            return true
         }
             catch {
             print("Error")
