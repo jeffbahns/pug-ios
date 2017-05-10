@@ -16,9 +16,8 @@ class AddGameViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
     
     var api = APIAssistant()
     var pickerData: [String] = [String]()
-    var pickedCourtID: Int?
-    
-    override func viewDidLoad() {
+    var pickedCourt: Court?
+        override func viewDidLoad() {
         super.viewDidLoad()
         self.pickerView.delegate = self
         self.pickerView.dataSource = self
@@ -48,8 +47,7 @@ class AddGameViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
        return courtDS?.courtAt(row).courtName()
     }
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        self.pickedCourtID = courtDS?.courtAt(row).courtID()
-    }
+        self.pickedCourt = (courtDS?.courtAt(row))!    }
     
     @IBAction func addGameBotton(_ sender: Any) {
         let currentDate = Date()
@@ -59,15 +57,38 @@ class AddGameViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
         let dateTime = formatter.string(from: gameDatePicker.date)
         let currentDateTime = formatter.string(from: currentDate)
         if let title = titleTextfield.text,
-            let courtID = self.pickedCourtID,
+            let courtID = self.pickedCourt?.courtID(),
             dateTime >= currentDateTime {
             //print("\(title), \(dateTime), \(courtID)")
             let formattedTitle = title.replacingOccurrences(of: " ", with: "%20")
             
+            
             if api.insert_game(gameDateTime: dateTime, gameName: formattedTitle, gameDuration: 1, gameSkillLevel: "C", courtID: courtID, creatorID: 4) {
+                var gameMessage = "You have created a game at "
+
+                gameMessage = gameMessage + (pickedCourt?.courtName())!
+
+                let alertController = UIAlertController(title: "SUCCESS", message: gameMessage, preferredStyle: .alert)
+                
+                let OKAction = UIAlertAction(title: "OK", style: .default) { (action:UIAlertAction) in
+                    print("You've pressed OK button");
+                }
+                alertController.addAction(OKAction)
+                self.present(alertController, animated: true, completion:nil)
                 print("game creation SUCCESS")
-            } else {
+                
+            }else {
+                let error = "Game has not been created"
+                let alertController = UIAlertController(title: "FAIL", message: error, preferredStyle: .alert)
+                
+                let OKAction = UIAlertAction(title: "OK", style: .default) { (action:UIAlertAction) in
+                    print("You've pressed OK button");
+                }
+                alertController.addAction(OKAction)
+                self.present(alertController, animated: true, completion:nil)
+
                 print("game creation FAIL")
+                    
             }
         }
     }
