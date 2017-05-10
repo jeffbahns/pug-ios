@@ -32,12 +32,19 @@ class GameTableViewCell: UITableViewCell {
         let p = Player(player: game.game)
         if let playerImage = p.getImage(){
             gameUserImage.image = playerImage
+            gameUserImage.setRounded()
+            /*
+            gameUserImage.layer.borderWidth = 1
+            gameUserImage.layer.masksToBounds = false
+            gameUserImage.layer.borderColor = UIColor.black.cgColor
+            gameUserImage.layer.cornerRadius = gameUserImage.frame.height/2
+            gameUserImage.clipsToBounds = true
+             */
         }
         if let dateTime = game.gameTime() {
             gameDateTimeLabel.text = displayDate(dateTime: dateTime)
         }
     }
-
 }
 
 extension UITableViewCell {
@@ -56,5 +63,13 @@ extension UITableViewCell {
             hour = 12
         }
         return "\(month)/\(day)/\(year), \(hour!):\(min) \(ampm)"
+    }
+}
+
+extension UIImageView {
+    func setRounded() {
+        let radius = self.frame.width / 2
+        self.layer.cornerRadius = radius
+        self.layer.masksToBounds = true
     }
 }

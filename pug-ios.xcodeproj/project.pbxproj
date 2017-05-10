@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		2D0DFBEA1EB0172B004E2A02 /* PlayerCoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D0DFBE91EB0172B004E2A02 /* PlayerCoreData.swift */; };
+		B41753541EC323730020A8C3 /* InformationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B41753531EC323730020A8C3 /* InformationViewController.swift */; };
 		B41BADF61E9C4C5200429971 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B41BADF51E9C4C5200429971 /* AppDelegate.swift */; };
 		B41BADF81E9C4C5200429971 /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B41BADF71E9C4C5200429971 /* RootViewController.swift */; };
 		B41BADFA1E9C4C5200429971 /* DataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B41BADF91E9C4C5200429971 /* DataViewController.swift */; };
@@ -45,6 +46,7 @@
 
 /* Begin PBXFileReference section */
 		2D0DFBE91EB0172B004E2A02 /* PlayerCoreData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerCoreData.swift; sourceTree = "<group>"; };
+		B41753531EC323730020A8C3 /* InformationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InformationViewController.swift; sourceTree = "<group>"; };
 		B41BADF21E9C4C5200429971 /* pug-ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "pug-ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B41BADF51E9C4C5200429971 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B41BADF71E9C4C5200429971 /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
@@ -219,6 +221,7 @@
 			children = (
 				B4797E791E9F02E600610990 /* LoginViewController.swift */,
 				B467654A1EA5FC8800AC48BA /* SignupViewController.swift */,
+				B41753531EC323730020A8C3 /* InformationViewController.swift */,
 			);
 			name = login/reg;
 			sourceTree = "<group>";
@@ -323,6 +326,7 @@
 				B4C375DC1EAA862D00B51689 /* AddGameViewController.swift in Sources */,
 				B4E9765E1EBAA70B00EFEF26 /* CourtViewController.swift in Sources */,
 				B485D7C21EA6B972003D270F /* CourtDataSource.swift in Sources */,
+				B41753541EC323730020A8C3 /* InformationViewController.swift in Sources */,
 				B4E9766C1EBAE93D00EFEF26 /* UserViewController.swift in Sources */,
 				B4C375DF1EADDC3B00B51689 /* pug-ios.xcdatamodeld in Sources */,
 				B41BADF61E9C4C5200429971 /* AppDelegate.swift in Sources */,

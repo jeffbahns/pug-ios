@@ -10,28 +10,27 @@ import UIKit
 import CoreLocation
 import MapKit
 
-/*
-protocol HandleMapSearch {
-    func dropPinZoomIn(placemark:MKPlacemark)
-}
-*/
+
 class HomeViewController: UIViewController {
 
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var dock: UIToolbar!
 
+    let playerCD = PlayerCoreData()
     let manager = CLLocationManager()
     var selectedCourt: CourtAnnotation? = nil
     
     var resultSearchController:UISearchController? = nil
     var selectedPin:MKPlacemark? = nil
     
-    
     var apiAssistant: APIAssistant?
     var courtDS: CourtDataSource?
     
     
-    let playerCD = PlayerCoreData()
+    @IBOutlet weak var nearbyButton: UIBarButtonItem!
+    @IBOutlet weak var addNewButton: UIBarButtonItem!
+    @IBOutlet weak var profileButton: UIBarButtonItem!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -42,9 +41,10 @@ class HomeViewController: UIViewController {
         manager.requestWhenInUseAuthorization()
         manager.requestLocation()
         mapView.delegate = self
-        /*
+        
+        
         // search table shit
-        let locationSearchTable = storyboard!.instantiateViewController(withIdentifier: "LocationSearchTableViewController") as!    LocationSearchTableViewController
+        let locationSearchTable = storyboard!.instantiateViewController(withIdentifier: "LocationSearchTableViewController") as! LocationSearchTableViewController
         resultSearchController = UISearchController(searchResultsController: locationSearchTable)
         resultSearchController?.searchResultsUpdater = locationSearchTable
         
@@ -52,21 +52,21 @@ class HomeViewController: UIViewController {
         searchBar.sizeToFit()
         searchBar.placeholder = "Search for places"
         navigationItem.titleView = resultSearchController?.searchBar
-        
         resultSearchController?.hidesNavigationBarDuringPresentation = false
         resultSearchController?.dimsBackgroundDuringPresentation = true
         definesPresentationContext = true
         
         locationSearchTable.mapView = mapView
         locationSearchTable.handleMapSearchDelegate = self
-         */
+         
     }
     
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "homeToUser" {
             var userVC = segue.destination as! UserViewController
-            userVC.userID = 5
+            self.playerCD.getUserCoreData()
+            userVC.userID = self.playerCD.getPlayerID()
         }
         
         if segue.identifier == "courtPinToCourt" {
@@ -84,33 +84,5 @@ class HomeViewController: UIViewController {
 }
 
 
-/*
-extension HomeViewController: HandleMapSearch {
-    func dropPinZoomIn(placemark:MKPlacemark){
-        // cache the pin
-        selectedPin = placemark
-        // clear existing pins
-        mapView.removeAnnotations(mapView.annotations)
-        let annotation = MKPointAnnotation()
-        print("Title: \(placemark.name)\n"
-            + "CountryAbr: \(placemark.countryCode)\n"
-            + "CountryFull: \(placemark.country)\n"
-            + "Address: \(placemark.thoroughfare)\n"
-            + "City: \(placemark.locality)\n"
-            + "Zip: \(placemark.postalCode)\n"
-            + "\(placemark)"
-        )
-        
-        annotation.coordinate = placemark.coordinate
-        annotation.title = placemark.name
-        if let city = placemark.locality,
-            let state = placemark.administrativeArea {
-            annotation.subtitle = "\(city) \(state)"
-        }
-        mapView.addAnnotation(annotation)
-        let span = MKCoordinateSpanMake(0.05, 0.05)
-        let region = MKCoordinateRegionMake(placemark.coordinate, span)
-        mapView.setRegion(region, animated: true)
-    }
-}
-*/
+
+

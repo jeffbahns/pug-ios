@@ -54,13 +54,13 @@ class APIAssistant: NSObject {
         return true
     }
     
-    func authorize_request(username: String, password: String) {
+    func authorize_request(username: String, password: String) -> Bool {
         if server_remote {
             self.urlString = API.auth_url + "?Username=\(username)&Password=\(password)"
         } else {
             self.urlString = API.auth_local_url + "?Username=\(username)&Password=\(password)"
         }
-        self.download_request()
+        return self.download_request()
     }
     
     func locations_request(origin_lat: Double, origin_long: Double, radius: Int) {
@@ -110,5 +110,14 @@ class APIAssistant: NSObject {
         self.urlString += "&GameSkillLevel=\(gameSkillLevel)&CourtID=\(String(courtID))&CreatorID=\(String(creatorID))"
         return self.download_request()
         
+    }
+    func join_game(playerID: Int, gameID: Int) -> Bool {
+        if server_remote {
+            self.urlString = API.base_url + API.join_game
+        } else {
+            self.urlString = API.base_url_local + API.join_game
+        }
+        self.urlString += "?PlayerID=\(playerID)&GameID=\(gameID)"
+        return self.download_request()
     }
 }

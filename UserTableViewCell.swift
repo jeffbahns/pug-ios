@@ -24,7 +24,12 @@ class UserTableViewCell: UITableViewCell {
     }
 
     func useUser(_ user: Player) {
-        usernameLabel.text = user.playerUsername()
-        userImage.image = user.getImage()
+        if let name = user.playerUsername() {
+            usernameLabel.text = name
+        }
+        if let image = user.getImage() {
+            userImage.image = image
+            userImage.setRounded()
+        }
     }
 }

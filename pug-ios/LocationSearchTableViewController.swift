@@ -5,14 +5,14 @@
 //  Created by Jeffrey Bahns on 4/24/17.
 //  Copyright © 2017 Jeffrey Bahns. All rights reserved.
 //
-/*
+
 import UIKit
 import MapKit
+
 class LocationSearchTableViewController: UITableViewController {
     var matchingItems: [MKMapItem] = []
     var mapView: MKMapView? = nil
-    //var handleMapSearchDelegate: HandleMapSearch? = nil
-    
+    var handleMapSearchDelegate: HandleMapSearch? = nil
     func parseAddress(selectedItem:MKPlacemark) -> String {
         // put a space between "4" and "Melrose Place"
         let firstSpace = (selectedItem.subThoroughfare != nil && selectedItem.thoroughfare != nil) ? " " : ""
@@ -78,4 +78,3 @@ extension LocationSearchTableViewController : UISearchResultsUpdating {
     
 }
 
- */

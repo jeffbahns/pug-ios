@@ -52,7 +52,8 @@ class AddGameViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
        return courtDS?.courtAt(row).courtName()
     }
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        self.pickedCourt = (courtDS?.courtAt(row))!    }
+        self.pickedCourt = (courtDS?.courtAt(row))!
+    }
     
     @IBAction func addGameBotton(_ sender: Any) {
         let formatter = DateFormatter()
@@ -67,8 +68,6 @@ class AddGameViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
             let formattedTitle = title.replacingOccurrences(of: " ", with: "%20")
             
             let playerid = player.getPlayerID()
-            player.deleteCoreData()
-            player.coreDataTester()
             
             if api.insert_game(gameDateTime: dateTime, gameName: formattedTitle, gameDuration: 1, gameSkillLevel: "C", courtID: courtID, creatorID: playerid  ) {
                 var gameMessage = "You have created a game at "
@@ -83,8 +82,9 @@ class AddGameViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
                 alertController.addAction(OKAction)
                 self.present(alertController, animated: true, completion:nil)
                 print("game creation SUCCESS")
+                //
                 
-            }else {
+            } else {
                 let error = "Game has not been created"
                 let alertController = UIAlertController(title: "FAIL", message: error, preferredStyle: .alert)
                 
@@ -100,13 +100,14 @@ class AddGameViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
         }
     }
 
-    /*
+    
     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        if let courtVC: CourtViewController = sender as! CourtViewController {
+            performSegue(withIdentifier: "addGameToCourt", sender: self)
+        }
+        
     }
-    */
+    
 }

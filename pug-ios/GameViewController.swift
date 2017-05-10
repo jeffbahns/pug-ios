@@ -10,11 +10,15 @@ import UIKit
 
 class GameViewController: UIViewController {
     var game: Game?
-    
+    var player: Player?
     @IBOutlet weak var gameCreator: UILabel!
-    @IBOutlet weak var gameTitle: UILabel!
     @IBOutlet weak var gameDateTime: UILabel!
+    @IBOutlet weak var gameCreatorImage: UIImageView!
     
+    let playerCD = PlayerCoreData()
+    var server = APIAssistant()
+    
+    @IBOutlet weak var gameJoinButton: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -23,6 +27,20 @@ class GameViewController: UIViewController {
         }
         if let gdt = game?.gameDate() {
             gameDateTime.text = displayDate(dateTime: gdt)
+        }
+        
+        playerCD.getUserCoreData()
+        player = Player(player: (game?.game)!)
+        if let image = player?.getImage() {
+            gameCreatorImage.image = image
+            gameCreatorImage.setRounded()
+        }
+        if let username = player?.playerUsername() {
+            gameCreator.text = username
+            if let stored = playerCD.getUsername(),
+                stored == username {
+                gameJoinButton.isHidden = true
+            }
         }
     }
 
@@ -33,6 +51,13 @@ class GameViewController: UIViewController {
 
     func gameForThisView(game: Game) {
         self.game = game
+
+    }
+
+    @IBAction func joinGame(_ sender: Any) {
+        if let gID = game?.gameID() {
+            server.join_game(playerID: playerCD.getPlayerID(), gameID: gID)
+        }
     }
 
 

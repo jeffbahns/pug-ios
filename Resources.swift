@@ -14,18 +14,22 @@ struct API {
     static let base_url = "https://enigmatic-tundra-24206.herokuapp.com/api"
     static let auth_url = base_url + "/authenticate"
     static let auth_local_url = base_url_local + "/authenticate"
-    static let all_games = API.base_url + "/all_games"
+
     static let all_players = API.base_url + "/all_players"
     
     static let all_courts = API.base_url + "/all_courts"
     static let some_courts = API.base_url + "/courts"
     static let some_courts_local = API.base_url_local + "/courts"
     
-    static let games_in_court = "/games_in_court?CourtID="
+
     static let players_in_game = "/players_in_game?GameID="
     static let player_by_id = "/player_by_id?PlayerID="
     
+    // game
+        static let all_games = API.base_url + "/all_games"
     static let insert_game = "/insert_game"
+    static let games_in_court = "/games_in_court?CourtID="
+    static let join_game = "/join_game"
 }
 
 // globals set here for all database structures

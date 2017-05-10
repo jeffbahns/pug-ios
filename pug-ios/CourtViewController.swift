@@ -51,9 +51,14 @@ class CourtViewController: UIViewController {
     // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "courtToGame" {
-            print("Giving court id a destination")
             var gameTVC = segue.destination as! GameTableViewController
             gameTVC.courtID = court?.courtID()
+        }
+        
+        if segue.identifier == "courtToAddGame" {
+            var addGameVC = segue.destination as! AddGameViewController
+            var cds = CourtDataSource(dataSource: [(self.court?.court)!])
+            addGameVC.courtDSForThisView(courtDS: cds)
         }
     }
  

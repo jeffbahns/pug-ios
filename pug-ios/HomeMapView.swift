@@ -9,12 +9,16 @@
 import Foundation
 import MapKit
 
+protocol HandleMapSearch {
+    func dropPinZoomIn(placemark:MKPlacemark)
+}
+
 extension HomeViewController: MKMapViewDelegate {
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         if annotation is CourtAnnotation {
             let pinAnnotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: "myPin")
             let view = MKAnnotationView(annotation: annotation, reuseIdentifier: "myPin")
-
+            
             let courtPin = UIImage(named: "hoop")
             let size = CGSize(width: 40, height: 40)
             UIGraphicsBeginImageContext(size)
@@ -37,7 +41,7 @@ extension HomeViewController: MKMapViewDelegate {
             
             var rightButton: AnyObject! = UIButton(type: .detailDisclosure)
             view.rightCalloutAccessoryView = rightButton as! UIView
-
+            
             return view
         }
         return nil
@@ -51,7 +55,7 @@ extension HomeViewController: MKMapViewDelegate {
     }
 }
 
-extension HomeViewController : CLLocationManagerDelegate {
+extension HomeViewController: CLLocationManagerDelegate {
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         print("error:: \(error.localizedDescription)")
@@ -90,5 +94,34 @@ extension HomeViewController : CLLocationManagerDelegate {
             self.mapView.region = currentRegion
             
         }
+    }
+}
+
+extension HomeViewController: HandleMapSearch {
+    func dropPinZoomIn(placemark:MKPlacemark){
+        // cache the pin
+        selectedPin = placemark
+        // clear existing pins
+        mapView.removeAnnotations(mapView.annotations)
+        let annotation = MKPointAnnotation()
+        print("Title: \(placemark.name)\n"
+            + "CountryAbr: \(placemark.countryCode)\n"
+            + "CountryFull: \(placemark.country)\n"
+            + "Address: \(placemark.thoroughfare)\n"
+            + "City: \(placemark.locality)\n"
+            + "Zip: \(placemark.postalCode)\n"
+            + "\(placemark)"
+        )
+        
+        annotation.coordinate = placemark.coordinate
+        annotation.title = placemark.name
+        if let city = placemark.locality,
+            let state = placemark.administrativeArea {
+            annotation.subtitle = "\(city) \(state)"
+        }
+        mapView.addAnnotation(annotation)
+        let span = MKCoordinateSpanMake(0.05, 0.05)
+        let region = MKCoordinateRegionMake(placemark.coordinate, span)
+        mapView.setRegion(region, animated: true)
     }
 }

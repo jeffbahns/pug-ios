@@ -12,7 +12,7 @@ import CoreData
 
 class PlayerCoreData: NSObject{
     
-    var CDusername = ""
+    var CDusername: String?
     var CDplayerAge = 0
     var CDfirstName = ""
     var CDlastName  = ""
@@ -23,7 +23,7 @@ class PlayerCoreData: NSObject{
         let context = appDelegate.persistentContainer.viewContext
         let playerCD = Player_(context:context)
         
-        playerCD.username = p.playerUsername()!
+        playerCD.username = p.playerUsername()
         playerCD.player_age = Int16(p.playerAge()!)
         playerCD.player_first_name = p.playerFirstName()!
         playerCD.player_last_name = p.playerLastName()!
@@ -58,9 +58,7 @@ class PlayerCoreData: NSObject{
         let context = appDelegate.persistentContainer.viewContext
         let playerCD = Player_(context:context)
         context.delete(playerCD)
-        
-        
-        }
+    }
         
     
    
@@ -74,30 +72,27 @@ class PlayerCoreData: NSObject{
             let playersCD = result as! [Player_]
             
             for playerCD in playersCD {
-                
-                
-                
-                CDusername = (String(describing: playerCD.username))
+                if let username = playerCD.username {
+                    CDusername = username
+                }
                 CDplayerAge = Int(playerCD.player_age)
                 CDfirstName = String(describing: playerCD.player_first_name)
                 CDlastName = String(describing: playerCD.player_last_name)
                 CDPlayerid = Int(playerCD.player_id)
-                
-                
-                
             }
             return true
-        }
-            catch {
+        } catch {
             print("Error")
             return false
-            }
+        }
         return false
     }
     
-    func getUsername()->String{
-         print("username: \(String(describing:CDusername))\n")
-        return CDusername
+    func getUsername()->String?{
+        if let a = CDusername {
+            return a
+        }
+        return nil
     }
     func getFirstName()->String{
         print("Firstname: \(String(describing:CDfirstName))\n")

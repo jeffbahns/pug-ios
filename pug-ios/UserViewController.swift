@@ -13,16 +13,32 @@ class UserViewController: UIViewController {
     var userID: Int?
     var api = APIAssistant()
     @IBOutlet weak var userImage: UIImageView!
-    @IBOutlet weak var username: UILabel!
     
+    @IBOutlet weak var userAgeLabel: UILabel!
+    @IBOutlet weak var userRealNameLabel: UILabel!
+    @IBOutlet weak var userNameLabel: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
+
         if user == nil {
             api.player_by_id(playerID: userID!)
             user = Player(player: api.data()![0] as AnyObject)
         }
-        self.title = user?.playerUsername()
-        self.userImage.image = user?.getImage()
+        
+        if let name = user?.playerUsername() {
+            //self.title = name
+            userNameLabel.text = name
+        }
+        if let img = user?.getImage() {
+            self.userImage.image = img
+            self.userImage.setRounded()
+        }
+        if let fName = user?.playerFirstName(),
+            let lName = user?.playerLastName() {
+            //self.title = name
+            userRealNameLabel.text = "\(fName) \(lName)"
+        }
+        
     }
 
     override func didReceiveMemoryWarning() {
